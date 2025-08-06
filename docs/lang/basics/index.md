@@ -119,8 +119,8 @@ print(a)
 
 ## Drift and JVM
 
-Drift is written in Kotlin, a JVM-based language written in Java by JetBrains.
-Drift is interpreted using the Kotlin JVM, the Drift heap behavior is the same
+Drift is written in Kotlin, a JVM-based language written in Kotlin by JetBrains.
+Drift is interpreted using the Kotlin's JVM, the Drift heap behavior is the same
 as Kotlin one.
 
 We believe Kotlin is an incredible environment to develop our language with 
@@ -270,7 +270,7 @@ a == b ? {
 ```
 
 This way has the advantage of returning a value from the expression.
-You can use it on value assignation for example:
+You can use it on value assignation, for example:
 
 ```drift
 let a = 1
@@ -295,7 +295,7 @@ To not confuse with ``NotAssigned``.
 
 By default, Drift forbids ``NULL`` as value for safety purposes. 
 If a variable is nullable, the behavior must be precised using the ``?`` 
-operator after it.
+operator after the type.
 
 ```drift
 let a: Int = null
