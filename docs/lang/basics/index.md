@@ -172,10 +172,11 @@ Unsigned integer is not the absolute value of an integer.
 
 :::
 
-### Other numeric types
-
+:::warning
 At this time, Drift does not support other numeric types.
-We plan to add `Int16`, `Int8`, and their unsigned version.
+We plan to add `Int16`, `Int8`, and their unsigned version,
+and hexadecimal syntax.
+:::
 
 ## Booleans and Conditional
 
