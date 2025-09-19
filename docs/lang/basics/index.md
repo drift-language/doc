@@ -101,9 +101,9 @@ canUse = age >= 18
 
 ## Statements separation and semicolon
 
+:::warning
 At this time, Drift does not support inline statement separation.
-Semicolon is not an accepted symbol. Each statement must be separated
-by a new line.
+Semicolon is not an accepted symbol. A new line must separate each statement.
 
 ```drift
 let a = 1 print(a)
@@ -116,6 +116,7 @@ let a = 1
 print(a)
 // Successful!
 ```
+:::
 
 ## Drift and JVM
 
@@ -328,10 +329,14 @@ let a: String|Int|Null = null
 
 ## Unwrap optionals
 
+:::warning
 Currently, Drift does not support optional unwrapping.
 We plan to add the ``!`` operator as entity suffix to unwrap.
+:::
 
 ## Error handling
 
+:::warning
 Currently, Drift does not support error handling.
 We plan to add the ``throw`` keyword and error handling system.
+:::
