@@ -21,14 +21,14 @@ class ClassName : +PrefabName
 - ``Data`` to create data classes with util members
 - ``Subscriptable`` to add a native index system to class with getter and setter
 ```drift
-class A : Subscriptable {
+class A : +Subscriptable {
     subscript (index: Int) : Int {
         return ...
     }
 } 
 ```
-- ``Equatable`` to implement ``equals`` and ``notEquals`` methods
-- ``Comparable`` to implement ``compareTo`` method
+- ``Equatable`` to implement operator methods for ``==`` and ``!=`` operators
+- ``Comparable`` to implement operator methods for comparison operators
 - ``Hashable`` to implement ``hash`` method
 - ``Cloneable`` to implement deep/shallow ``clone`` method
 - ``Serializable`` to implement native _JSON_ auto serialization
