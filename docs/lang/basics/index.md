@@ -101,9 +101,9 @@ canUse = age >= 18
 
 ## Statements separation and semicolon
 
+:::warning
 At this time, Drift does not support inline statement separation.
-Semicolon is not an accepted symbol. Each statement must be separated
-by a new line.
+Semicolon is not an accepted symbol. A new line must separate each statement.
 
 ```drift
 let a = 1 print(a)
@@ -116,11 +116,12 @@ let a = 1
 print(a)
 // Successful!
 ```
+:::
 
 ## Drift and JVM
 
-Drift is written in Kotlin, a JVM-based language written in Java by JetBrains.
-Drift is interpreted using the Kotlin JVM, the Drift heap behavior is the same
+Drift is written in Kotlin, a JVM-based language written in Kotlin by JetBrains.
+Drift is interpreted using the Kotlin's JVM, the Drift heap behavior is the same
 as Kotlin one.
 
 We believe Kotlin is an incredible environment to develop our language with 
@@ -172,10 +173,11 @@ Unsigned integer is not the absolute value of an integer.
 
 :::
 
-### Other numeric types
-
+:::warning
 At this time, Drift does not support other numeric types.
-We plan to add `Int16`, `Int8`, and their unsigned version.
+We plan to add `Int16`, `Int8`, and their unsigned version,
+and hexadecimal syntax.
+:::
 
 ## Booleans and Conditional
 
@@ -270,7 +272,7 @@ a == b ? {
 ```
 
 This way has the advantage of returning a value from the expression.
-You can use it on value assignation for example:
+You can use it on value assignation, for example:
 
 ```drift
 let a = 1
@@ -295,7 +297,7 @@ To not confuse with ``NotAssigned``.
 
 By default, Drift forbids ``NULL`` as value for safety purposes. 
 If a variable is nullable, the behavior must be precised using the ``?`` 
-operator after it.
+operator after the type.
 
 ```drift
 let a: Int = null
@@ -327,10 +329,14 @@ let a: String|Int|Null = null
 
 ## Unwrap optionals
 
+:::warning
 Currently, Drift does not support optional unwrapping.
 We plan to add the ``!`` operator as entity suffix to unwrap.
+:::
 
 ## Error handling
 
+:::warning
 Currently, Drift does not support error handling.
 We plan to add the ``throw`` keyword and error handling system.
+:::
