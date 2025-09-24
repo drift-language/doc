@@ -26,7 +26,7 @@ Arrays have immutable size.
 :::warning
 At this moment, Drift does not implement Arrays.
 ```drift
-let anArray: [Type:Size] = [ ... ]
+let anArray: Type[Size] = [ ... ]
 ```
 :::
 
@@ -47,7 +47,7 @@ than Arrays.
 :::warning
 At this moment, Drift does not implement explicit list typing.
 ```drift
-let aList: Type[] = [ ... ]
+let aList: [Type] = [ ... ]
 ```
 :::
 

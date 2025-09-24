@@ -331,7 +331,7 @@ let a: String|Int|Null = null
 
 :::warning
 Currently, Drift does not support optional unwrapping.
-We plan to add the ``!`` operator as entity suffix to unwrap.
+We plan to add the ``!`` operator as postfix operator for unwrapping.
 :::
 
 ## Error handling
