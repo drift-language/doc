@@ -53,8 +53,8 @@ At this moment, Drift does not implement bitwise left and right shift operators.
 0b0011 << 1     // equals 0b0110
 0b0011 << 2     // equals 0b1100
 
-0b0011 >> 1     // equals 0b0011
-0b0011 >> 2     // equals 0b0001
+0b0011 >> 1     // equals 0b0001
+0b0011 >> 2     // equals 0b0000
 ```
 :::
 
