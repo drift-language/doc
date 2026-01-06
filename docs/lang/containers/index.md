@@ -10,7 +10,7 @@ and **dictionaries**. Each container has its own properties and logic.
 
 :::note
 Containers are based on Kotlin types.
-Sets are based on Kotlin's ``Map`` type.
+For example, Dictionaries are based on Kotlin's ``Map`` type.
 :::
 
 <div class="text--center">![](/img/pics/containers.png)</div>

@@ -187,7 +187,7 @@ if condition {
 
 ### Drift Conditional Expression (DCE)
 
-The _Drift Conditional Expression_, shorted as _BCE_ is a 
+The _Drift Conditional Expression_, shorted as _DCE_ is a 
 ternary-based conditional structure. In other languages, 
 ternary is only used as value expression. Drift permits using 
 it as a conditional statement:
@@ -213,7 +213,7 @@ condition ? {
 }
 ```
 
-_BCE_ can also be used as a value expression:
+_DCE_ can also be used as a value expression:
 ```drift
 let age = 18
 let message = age >= 18 
@@ -228,11 +228,11 @@ let message = age >= 18 ? {
     "You have less than 18 y.o."
 }
     
-// Braces are optional for BCE branches
+// Braces are optional for DCE branches
 ```
 
 By using braces, consider the last branch expression 
-as the value if you use _BCE_ as a value expression.
+as the value if you use _DCE_ as a value expression.
 So, it is possible and accepted to do some statements
 before giving the final value. The version without braces
 does not support multiple statements in a branch.
@@ -253,15 +253,15 @@ let message = age >= 18 ? {
 #### ``Take-If``
 
 In some situations, it is interesting to use a value only if 
-the provided condition is true. The take-if syntax is based on _BCE_
+the provided condition is true. The take-if syntax is based on _DCE_
 and permits doing it. This behavior is permitted by the behavior of an 
-undefined _BCE_ branch, its value is by default ``Null``.
+undefined _DCE_ branch, its value is by default ``Null``.
 
 ```drift
 fun getSecretIfMajor(age: Int) : String? {
     return age >= 18 ? "This is a secret!"
     // If age >= 18 is true, the string will be returned.
-    // Else, NULL will be returned.
+    // Else, Null will be returned.
 }
 ```
 

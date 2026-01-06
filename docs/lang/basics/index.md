@@ -78,7 +78,7 @@ let hello: String = "Hello"
 
 ### Unassigned variable
 
-Declared variable without value has ``NotAssigned`` type by default.
+Declared variable without value has ``Unknown`` type by default.
 An unassigned variable cannot be used. 
 
 ```drift
@@ -120,7 +120,7 @@ print(a)
 
 ## Drift and JVM
 
-Drift is written in Kotlin, a JVM-based language written in Kotlin by JetBrains.
+Drift is written in Kotlin, a JVM-based language written in Java by JetBrains.
 Drift is interpreted using the Kotlin's JVM, the Drift heap behavior is the same
 as Kotlin one.
 
@@ -292,10 +292,10 @@ let c = a == 2
 
 ## Optional type and valueless
 
-``NULL`` is an initialized valueless variable, representing the absence of value.
-To not confuse with ``NotAssigned``.
+``Null`` is an initialized valueless variable, representing the absence of value.
+To not confuse with ``Unknown``.
 
-By default, Drift forbids ``NULL`` as value for safety purposes. 
+By default, Drift forbids ``Null`` as value for safety purposes. 
 If a variable is nullable, the behavior must be precised using the ``?`` 
 operator after the type.
 
@@ -307,7 +307,7 @@ let b: Int? = null
 // Successful!
 ```
 
-Untyped variable accepts ``NULL`` as value. It is a reason to explicitly type
+Untyped variable accepts ``Null`` as value. It is a reason to explicitly type
 everything!
 
 ## Types union

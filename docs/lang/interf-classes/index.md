@@ -43,24 +43,28 @@ class User(name: String, password: String)
 
 ### Static Members
 
-:::warning
-At this moment, Drift does not implement static members.
+Sometimes, we need to create members which are not instance-dependent.
+A static member is accessible using the Class' name.
+
 ```drift
 class A {
     static {
-        private let a
-        var b
-        ...
+        var x = 11
     }
-    
-    ...
+}
+
+print(A.x)    // Prints 11
+```
+
+A static field must be initialized on the class declaration.
+
+```drift
+class A {
+    static {
+        let x   // Error: x is not initialized
+    }
 }
 ```
-:::
-
-Sometimes, we need to create members which are not instance-dependent.
-Static Members have the same values for all instances of a Class.
-Static Methods can be run without an instance.
 
 ### Dynamic Members
 
@@ -91,7 +95,7 @@ Constructor Parameters cannot be positional. Their name must be written on insta
 :::warning
 At this moment, Drift does not implement the classic constructor.
 ```drift
-constructor (...) { ... }
+init (...) { ... }
 ```
 :::
 
@@ -99,14 +103,11 @@ The Classic Constructor is preferred if the initialization requires a script and
 In opposition to the other constructor, this cannot declare an attribute. The attributes
 must be declared in the class' body.
 
-It is suggested to use ``this`` keyword to target an attribute or method, to prevent any
-confusion with constructor's parameters.
-
 ```drift
 class Human {
-    private let name: String
+    let name: String
 
-    constructor (name: String) {
+    init (name: String) {
         $this.name = name
     }
     
@@ -114,11 +115,11 @@ class Human {
 }
 ```
 
-#### Short Constructor
+#### Primary Constructor
 
-Short Constructor permits declaring _private_ and _immutable_ attributes using a short 
-syntax. Short Constructor cannot be used with Classic one and the same class.
-So the Short Constructor can be used for private data, for example, and Classic one for public
+Primary Constructor permits declaring _private_ and _immutable_ attributes using a shorter 
+syntax. Primary Constructor cannot be used with Classic one and the same class.
+So the Primary Constructor can be used for private data, for example, and Classic one for public
 and complex other.
 
 ```drift
@@ -182,6 +183,10 @@ Another special case permits accessing without the class' name:
 
 **An Explicit Typed Context:**
 
+:::warning
+At this moment, Drift does not implement explicit typed contexts.
+:::
+
 If the context where the access is done already knows which class use,
 the class name can be omitted. Remember the dot before the member name.
 
@@ -214,7 +219,7 @@ class Settings {
     var isDarkModeEnabled = false
 }
 
-let me = User()     // me has the class instance reference
+let me = Settings()     // me has the class instance reference
 
 me.isDarkModeEnabled = true     // set a dynamic attribute
 print(me.isDarkModeEnabled)     // get a dynamic attribute
