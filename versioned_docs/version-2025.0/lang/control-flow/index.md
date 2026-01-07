@@ -5,7 +5,7 @@ sidebar_position: 5
 # Control Flow
 
 Drift provides many control flow structures:
-- Loops like ``while`` or ``for``…
+- Loops like ``for``
 - Conditionals like ``If-Else``, ``Drift-If``, ``Take-If``…
 - And other statements like ``break`` or ``continue``…
 
@@ -19,6 +19,7 @@ For-loop can be used with any _iterable_ value.
 
 :::info
 Drift will implement ``Iterable`` prefab soon.
+At this moment, Drift has a hard-coded iterator.
 :::
 
 ### With ``List``
@@ -120,28 +121,6 @@ and repeats the block while the condition remains true.
 - The `repeat-while` loop is slightly different: it runs the
 block once before checking the condition, then continues looping as long as the condition is true.
 
-### While
-
-:::warning
-At this moment, Drift does not implement while-loop.
-```drift
-while condition {
-    ...
-}
-```
-:::
-
-### Repeat-While
-
-:::warning
-At this moment, Drift does not implement repeat-while-loop.
-```drift
-repeat {
-    ...
-} while condition
-```
-:::
-
 ## Conditional
 
 Conditional statements are useful to execute different parts 
@@ -150,8 +129,6 @@ to create a conditional statement:
 
 - The _legacy_ ``If-Else`` statement
 - The Drift conditional expression
-
-These two structures follow the same logics, only the syntax changes.
 
 ### Legacy ``If-Else``
 
@@ -189,8 +166,8 @@ if condition {
 
 The _Drift Conditional Expression_, shorted as _DCE_ is a 
 ternary-based conditional structure. In other languages, 
-ternary is only used as value expression. Drift permits using 
-it as a conditional statement:
+ternary is only used as a value expression. Drift permits using 
+it as a conditional statement also:
 
 ```drift
 // Only THEN branch
@@ -216,9 +193,7 @@ condition ? {
 _DCE_ can also be used as a value expression:
 ```drift
 let age = 18
-let message = age >= 18 
-    ? "You have +18 y.o."
-    : "You have less than 18 y.o."
+let message = age >= 18 ? "You have +18 y.o." : "You have less than 18 y.o."
     
 // or
 
@@ -253,9 +228,9 @@ let message = age >= 18 ? {
 #### ``Take-If``
 
 In some situations, it is interesting to use a value only if 
-the provided condition is true. The take-if syntax is based on _DCE_
-and permits doing it. This behavior is permitted by the behavior of an 
-undefined _DCE_ branch, its value is by default ``Null``.
+the provided condition is true. The **Take-If** syntax is based on _DCE_
+and permits doing it. This behavior is permitted and will return ``Null``
+if reached.
 
 ```drift
 fun getSecretIfMajor(age: Int) : String? {
@@ -265,80 +240,12 @@ fun getSecretIfMajor(age: Int) : String? {
 }
 ```
 
-### Switch
-
-:::warning
-At this moment, Drift does not implement switch.
-```drift
-[let a = ] match value {
-    ~ "Hello" -> {}     // softEquals if implemented
-    = 0.1 -> {}         // equals
-    > 100 -> {} 
-    = 1, > 2 -> {}      // (with compound)
-    ^ "Dr" -> {}        // startsWith
-    $ "o" -> {}         // endsWith
-    ...
-    
-    min..max -> {}
-    
-    is Type -> {}
-    
-    has "email" -> {}   // Object having an "email" attribute
-    
-    empty -> {}         // isEmpty
-    
-    /[0-9]+/ -> {}      // RegExpr
-    
-    // Tuple matching
-    (_, 0) -> {}
-    (0, _) -> {}
-    (-1..1, -1..1) -> {}
-    ...
-    
-    else -> {}
-}
-```
-No one fallthrough, ``break`` not required!
-
-Braces are optional.
-:::
-
 ## Control Transfer Statements (CTS)
 
-:::warning
-At this moment, Drift does not implement _CTS_.
-:::
-
 _CTS_ permits changing an executed code behavior by transferring 
-control from a part of code to another. Drift has four _CTS_:
-- ``continue``
-- ``break``
+control from a part of code to another. Drift has one _CTS_:
 - ``return``
-- ``throw`` _(may change)_
 
-### Control Labels
-
-:::warning
-At this moment, Drift does not implement Jump Label.
-```drift
-myloop: for list {
-    ...
-    break myloop
-}
-```
-:::
-
-## Guard
-
-:::warning 
-At this moment, Drift does not implement guards.
-```drift
-fun test {
-    guard expression else {
-        return
-    }
-    
-    ...
-}
-```
+:::info
+Other _CTS_ will be implemented in the future.
 :::

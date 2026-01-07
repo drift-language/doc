@@ -81,7 +81,7 @@ const config: Config = {
       items: [
         {
           type: "docsVersionDropdown",
-          versions: ["current"],
+          versions: ["current", "2025.0"],
         },
         {
           type: 'docSidebar',

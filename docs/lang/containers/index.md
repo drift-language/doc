@@ -59,7 +59,7 @@ is cast as ``List``.
 ## Sets
 
 Sets get their power from their simplicity.
-Contrarily of Arrays and Lists, Sets permit
+Contrary to Arrays and Lists, Sets permit
 storing without an order and duplicate values.
 
 :::warning

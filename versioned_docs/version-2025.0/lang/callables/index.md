@@ -17,12 +17,12 @@ Drift offers three kinds of Callable:
 A function cannot be defined as a value, but its structure
 can be used as a value by using its name.
 
+It is **stored as a variable** in the **scope's environment**.
+
 ```drift
 fun test {}
 
-let a = test    // <[function@HASH] test Function>
-
-// but
+let a = test    // a equals the function's structure
 
 let b = fun otherTest {}  // It will throw a parser exception
 ```
@@ -72,45 +72,13 @@ Parameters can have a default value, if defined, the parameter becomes
 optional on call.
 
 ```drift
-fun greet(*name: String = "Unknown") { print("Hello " + name) }
+fun greet(*name: String = "Guest") { print("Hello " + name) }
 
-greet()             // Hello, Unknown
+greet()             // Hello, Guest
 greet("Harry")      // Hello, Harry
 ```
 
-Parameters cannot be edited inside the function body. An intermediate variable
-is required.
-
-#### Parameters Aliases
-
-:::warning
-At this moment, Drift does not implement Parameters Aliases.
-```drift
-fun test(named namedParameter: Type, *positional positionalParameter: Type) { ... }
-```
-
-Following syntax: ``(alias name, ...)``
-
-The alias must be used on call, and the original name in the function body.
-:::
-
-In some situations, the parameter's name should be different between the function
-body and the call for readability and writability purposes. Aliases can be used for
-this reason.
-
-#### Variadic Parameters
-
-:::warning
-At this moment, Drift does not implement variadic parameters.
-```drift
-fun test(a: String...) { ... }
-```
-:::
-
-A variadic parameter accepts zero or more values. Useful if the number of arguments
-is uncertain. For example, the native function ``print()`` use a native variadic structure
-for accepting a dynamic number of values. A function can only contain one variadic parameter 
-and must be placed at the end.
+_Parameters are immutable._
 
 ### Return Type and Value
 
@@ -138,39 +106,28 @@ return value
 fun hello : Last { "Hello" }
 ```
 
-#### Return Reference
-
-:::warning 
-At this moment, Drift does not implement return reference.
-```drift
-fun test {
-    hello {
-        return@test Value
-    }
-    
-    return OtherValue
-}
-```
-:::
-
 ## Class Methods
 
 Class methods have the same syntax as Functions. But have the particularity
-to be defined inside a Class. 
+to be defined inside a Class.
+
+:::note
+Methods are stored in the Class' definition structure, not in the environment itself,
+in opposition to Functions, for optimization purposes.
+:::
 
 ```drift
 class Animal {
+
     fun about : String {
         return "It is an animal"
     }
 }
 ```
 
-Please read the **Functions** section to learn more.
-
 ## Lambdas
 
-Lambdas permit defining functions as value. They can be defined into a 
+Lambdas permit defining functions as a value. They can be defined into a 
 variable, function return statement, etc.
 
 ```drift
@@ -180,8 +137,8 @@ let myName = (*name: String) -> {
 ```
 
 In opposition to Functions and Class Methods, Lambdas do a snapshot of the 
-parent environment to create its own. If the function must follow the parents'
-environments evolution, please use Functions.
+parent environment to create its own. If the function must be agnostic of the parents'
+environments' evolution, please use Functions.
 
 ```drift
 var a = 1
@@ -201,25 +158,14 @@ Lambdas can return the last value without ``return`` keyword by default, the
 ``Last`` return type is not required: Lambda body is a single expression.
 
 :::info
-Lambdas return ``Null`` by default, contrary to Functions who return ``Void``.
-Lambdas cannot return ``Void``, set it as return type will throw an exception.
-:::
-
-## Callable Type
-
-:::warning
-At this moment, Drift does not implement Function Type syntax.
-```drift
-let fnVar: (Type, ...) -> ReturnType = Function
-```
-:::
-
-Callable type can be used like any other types. 
-It is the same type for any Callable.
+Lambdas return ``Null`` by default, contrary to Functions and Methods who return ``Void``.
+Lambdas cannot return ``Void``, set it as return type will throw an exception on execution 
+(not declaration).
 
 ```drift
-let greetFunction: (String) -> Void = greet
+let weirdLambda = (): Void -> { ... }        // Will throw
 ```
+:::
 
 ## Nested Callables
 
@@ -235,37 +181,3 @@ fun parentFunction {
 
 In this example, ``childFunction`` will only be accessible 
 in ``parentFunction`` body.
-
-## Trailing Lambda Syntax (TLS)
-
-:::warning
-At this moment, Drift does not implement _TLS_.
-```drift
-// Single Callable parameter
-fun test(a: (Int) -> Void) { ... }
-
-// With implicit variable _
-test {
-    ...
-}
-
-// or
-// With variable
-test { as number
-    ...
-}
-
-// Two Callable parameters
-fun otherTest(a: (Int) -> Void, b: (String) -> Void) { ... }
-
-otherTest
-    a: { as number   // using number
-        ...
-    } 
-    b: {             // using _
-        ...
-    }
-```
-
-If there are +2 lambda parameters, they must be named, not positional.
-:::

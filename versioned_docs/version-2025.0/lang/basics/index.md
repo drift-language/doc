@@ -14,7 +14,7 @@ in the future.
 Like all programming languages, Drift offers native primary types:
 
 **Do you need to represent a digit?**
-> Let's use ``Int`` (integer), ``Float`` or ``Double`` types.
+> Let's use ``Int`` (integer), ``Int64`` or ``UInt`` types…
 
 **Do you need to represent a string?**
 > Let's use ``String`` type.
@@ -23,10 +23,8 @@ Like all programming languages, Drift offers native primary types:
 > Let's use ``Bool`` type.
 
 **Do you need to represent a value collection?**
-> In most cases, the ``List`` type is the best for representing a collection of values.
-> The list syntax is: ``[ value, value2, ... ]``. \
-> In case of **integer** range, ``Range`` type is preferred. 
-> The range syntax is: ``int..int`` (e.g. ``1..5`` = 1 to 5 included)
+> In most cases, the ``List`` type is the best to represent a collection of values.
+> In case of **numeric** range, ``Range`` type is preferred. 
 
 Drift also implements variables, classes and callables.
 
@@ -88,7 +86,7 @@ print(unassignedVariable)
 // It will throw a runtime exception: cannot use unassigned.
 ```
 
-A variable can be assigned later:
+A variable can be assigned later (immutable once):
 
 ```drift
 let canUse: Boolean     // Unassigned 
@@ -125,13 +123,11 @@ Drift is interpreted using the Kotlin's JVM, the Drift heap behavior is the same
 as Kotlin one.
 
 We believe Kotlin is an incredible environment to develop our language with 
-the efficiency of Kotlin, and the power of JVM.
+by its efficiency, and the power of the Java VM.
 
 :::note
-
 Drift does not support Kotlin and Java codes at this moment.
 We plan to add interoperability with Kotlin and Java in the future.
-
 :::
 
 Drift primary types are based on Kotlin ones.
@@ -167,16 +163,13 @@ let incorrect: UInt = -55
 // It will throw a runtime exception: cannot assign negative value with UInt.
 ```
 
-:::warning
-
+:::note
 Unsigned integer is not the absolute value of an integer.
-
 :::
 
-:::warning
-At this time, Drift does not support other numeric types.
+:::info
 We plan to add `Int16`, `Int8`, and their unsigned version,
-and hexadecimal syntax.
+and hexadecimal syntax in future releases.
 :::
 
 ## Booleans and Conditional
@@ -189,8 +182,7 @@ let canRead: Bool = true
 let canWrite: Bool = false
 ```
 
-It is possible to reverse boolean expression using the ``!`` operator
-as prefix:
+It is possible to reverse boolean expression using the unary ``!`` operator above:
 
 ```drift
 let a = true    // TRUE
@@ -206,23 +198,25 @@ This version is common with other programming languages.
 Drift does not recommend this syntax as well the next way
 is more concise and respectful of Drift conventions.
 
+Legacy syntax is a statement, not an expression unlike Kotlin.
+
 ```drift
-// Case 1: condition is TRUE
 let a = 1
 let b = 1
 
 if a == b {
     print("a equals b!")
 }
+```
 
-// Case 2: condition is FALSE
+```drift
 if a > b {
     print("a is superior than b")
 } else {
     print("a is not superior than b")
 }
-
-// Case 3: many branches
+```
+```drift
 if a > b {
     print("a is superior than b")
 } else if a < b {
@@ -230,18 +224,18 @@ if a > b {
 } else {
     print("a equals b")
 }
-
-// Parentheses are also supported!
+```
+```drift
+// Parentheses are supported!
 if (a == b) {
     print("a equals b!")
 }
 
-// Inline branches are also supported!
+// Inline branches are supported!
 if (a == b) print("a equals b!")
 ```
 
 :::danger
-
 Condition without parentheses followed by an inline statement is possible
 but unrecommended. It could create an unexpected behavior.
 We strongly recommended using parentheses with inline branch.
@@ -250,7 +244,6 @@ We strongly recommended using parentheses with inline branch.
 if a == b print("a equals b!") 
 // It is unrecommended!
 ```
-
 :::
 
 ### Drift Conditional
@@ -272,7 +265,7 @@ a == b ? {
 ```
 
 This way has the advantage of returning a value from the expression.
-You can use it on value assignation, for example:
+You can use it as a value, for example:
 
 ```drift
 let a = 1
@@ -285,25 +278,35 @@ let b = a == 1 ? {
 }
 
 // Inline branches
-let c = a == 2
-    ? "It should not happen..."
-    : "Oh nice!"
+let c = a == 2 ? "It should not happen..." : "Oh nice!"
+```
+
+Unlike other languages, Drift does not require the _else_ branch in ternary.
+If it is used as a value without it, if the condition equals False,
+it will return ``Null``. We call this syntax **Take-If**.
+
+```drift
+let condition = false
+let value = condition ? "It should not happen..."   // value equals Null
 ```
 
 ## Optional type and valueless
 
-``Null`` is an initialized valueless variable, representing the absence of value.
+``Null`` is an initialized valueless type.
 To not confuse with ``Unknown``.
 
 By default, Drift forbids ``Null`` as value for safety purposes. 
 If a variable is nullable, the behavior must be precised using the ``?`` 
-operator after the type.
+operator after the type, or its explicit version with union ``OtherType | Null``.
 
 ```drift
 let a: Int = null
 // It will throw a runtime exception: a is not optional.
 
 let b: Int? = null
+// Successful!
+
+let c: Int|Null = null
 // Successful!
 ```
 
@@ -326,17 +329,3 @@ to union.
 ```drift
 let a: String|Int|Null = null
 ```
-
-## Unwrap optionals
-
-:::warning
-Currently, Drift does not support optional unwrapping.
-We plan to add the ``!`` operator as postfix operator for unwrapping.
-:::
-
-## Error handling
-
-:::warning
-Currently, Drift does not support error handling.
-We plan to add the ``throw`` keyword and error handling system.
-:::
