@@ -35,8 +35,8 @@ fun myEmptyFunction {
 }
 ```
 
-A function can contain parameters, it is optional. In opposition of other languages,
-if no one parameter is defined, the parentheses are optional:
+A function can contain parameters, it is optional. In opposition to other languages,
+if no parameter is defined, the parentheses are optional:
 ```drift
 fun withoutParen { ... }
 
@@ -201,7 +201,7 @@ Lambdas can return the last value without ``return`` keyword by default, the
 ``Last`` return type is not required: Lambda body is a single expression.
 
 :::info
-Lambdas return ``Null`` by default, contrarily of Functions who return ``Void``.
+Lambdas return ``Null`` by default, contrary to Functions who return ``Void``.
 Lambdas cannot return ``Void``, set it as return type will throw an exception.
 :::
 

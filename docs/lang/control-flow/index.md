@@ -11,7 +11,7 @@ Drift provides many control flow structures:
 
 ## For 
 
-In opposition with many other languages, Drift merges 
+In opposition to many other languages, Drift merges 
 **for** and **for-in** statements in one ``for`` statement,
 with a lightweight syntax.
 
@@ -26,7 +26,7 @@ Drift will implement ``Iterable`` prefab soon.
 By using a List as an iterable value, there are
 zero to two implementable variables: the value,
 and the index. Declare more than two loop-variables
-using a List will throw a runtime exception. If no one
+using a List will throw a runtime exception. If no
 loop-variable is declared, the value will be stored
 implicitly into ``_``.
 

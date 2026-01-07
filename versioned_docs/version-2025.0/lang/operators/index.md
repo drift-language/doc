@@ -56,7 +56,7 @@ say(message = "Hello, World!")
 
 Drift implements standard arithmetic operators that can be used with numeric values:
 - Addition, using `+`
-- Substraction, using `-`
+- Subtraction, using `-`
 - Multiplication, using `*`
 - Division, using `/`
 
@@ -120,7 +120,7 @@ operations expressions.
 // Priorities: 5 + ( ( 1 * 3 ) / 4 )
 ```
 
-Add parentheses around an operation will give high priority.
+Adding parentheses around an operation will give it higher priority.
 
 ```drift
 (5 + 1) * 3 / 4

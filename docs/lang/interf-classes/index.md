@@ -139,8 +139,8 @@ class A(b: String = "a") {  // b Initialized on "a"
 
 ### Instantiating
 
-Interfaces cannot be instantiated, only Classes can. Contrarily to other languages, 
-Drift does not need ``new`` keyword.
+Interfaces cannot be instantiated, only Classes can. Unlike to other languages, 
+Drift does not need the ``new`` keyword.
 
 ```drift
 class Vehicle

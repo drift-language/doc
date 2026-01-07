@@ -114,7 +114,7 @@ fun processUser(id: String) throws {
 At this moment, Drift does not implement ``try`` keywords.
 :::
 
-Contrarily with many other languages, Drift does not use the ``try`` keyword for a try-catch
+Contrary to many other languages, Drift does not use the ``try`` keyword for a try-catch
 statement, do-catch in Drift. ``try`` is used for calling throwable callables and implement a
 specific behavior.
 

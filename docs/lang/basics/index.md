@@ -58,8 +58,8 @@ myMutable = "Bye."
 ```
 
 To prevent any security issue, we strongly recommend declaring variables 
-as **immutable** if no one reassignment is done in later. 
-Also, event if Drift supports untyped variable, prioritize type your variables
+as **immutable** if no reassignment is needed later. 
+Also, even if Drift supports untyped variables, prioritize typing your variables
 to make the code more maintainable and safe.
 
 ```drift

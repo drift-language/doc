@@ -17,7 +17,7 @@ For example, Dictionaries are based on Kotlin's ``Map`` type.
 
 :::warning
 At this moment, Drift only implements implicit List typing.
-Not other container types are supported yet.
+No other container types are supported yet.
 :::
 
 ## Lists
