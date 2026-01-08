@@ -57,8 +57,8 @@ myMutable = "Bye."
 // The variable's value will be reassigned.
 ```
 
-To prevent any security issue, we strongly recommend declaring variables 
-as **immutable** if no reassignment is needed later. 
+To prevent any security issues, we strongly recommend declaring variables 
+as **immutable** when no reassignment is needed later. 
 Also, even if Drift supports untyped variables, prioritize typing your variables
 to make the code more maintainable and safe.
 
