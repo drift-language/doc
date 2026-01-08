@@ -36,7 +36,7 @@ World"
 // World
 ```
 
-No one ```"""``` exists. The single double-quotes are used for multiline string literal.
+No one ```"""``` (triple quotes) syntax exists. The single double-quotes are used for multiline string literal.
 **This syntax could be modified in the future.**
 :::
 

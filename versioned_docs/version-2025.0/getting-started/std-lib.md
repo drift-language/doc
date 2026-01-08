@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # `Standard` Library
 
-Like almost other languages, Drift must implement a standard library
+Like most languages, Drift must implement a standard library
 implementing basic types and utilities.
 
 :::warning

@@ -138,7 +138,7 @@ Drift conditional expression instead of this legacy statement,
 for more human and concise code.
 :::
 
-Like the main part of the other languages, Drift permits using
+Like most other languages, Drift permits using
 the ``If-Else`` statements:
 
 ```drift
