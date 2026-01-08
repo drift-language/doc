@@ -81,7 +81,7 @@ const config: Config = {
       items: [
         {
           type: "docsVersionDropdown",
-          versions: ["current"],
+          versions: ["current", "2025.0"],
         },
         {
           type: 'docSidebar',
@@ -89,7 +89,7 @@ const config: Config = {
           position: 'left',
           label: 'Docs',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        // {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/drift-language/drift',
           label: 'GitHub',
@@ -121,10 +121,10 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
+            // {
+            //   label: 'Blog',
+            //   to: '/blog',
+            // },
             {
               label: 'GitHub',
               href: 'https://github.com/drift-language/drift',
@@ -139,6 +139,7 @@ const config: Config = {
       darkTheme: prismThemes.oneDark,
     },
   } satisfies Preset.ThemeConfig,
+
   scripts: []
 };
 

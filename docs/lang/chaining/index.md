@@ -29,19 +29,19 @@ nullableMember!.child
 :::
 
 Sometimes, members can be nullable. A direct chaining from them could throw a runtime exception
-in case of a ``NULL`` value.
+in case of a ``Null`` value.
 
 ```drift
 let username: String? = null
 print(username.length)      // It will throw a runtime exception, 
-                            // username is NULL, length is an unknown member
+                            // username is Null, length is an unknown member
 ```
 
-If you are sure that the member will not have ``NULL`` as value, you can use the ``!`` operator.
+If you are sure that the member will not have ``Null`` as value, you can use the ``!`` operator.
 It is used to unwrap nullable behavior from the member type: ``String? -> String``.
 
 :::warning
-Unwrap a member which has ``NULL`` as value will throw a runtime exception: ``NULL`` cannot be
+Unwrap a member which has ``Null`` as value will throw a runtime exception: ``Null`` cannot be
 unwrapped.
 :::
 
@@ -55,4 +55,4 @@ nullableMember?.child
 ```
 :::
 
-Optional Chaining permits doing a chain if the member is not ``NULL``.
+Optional Chaining permits doing a chain if the member is not ``Null``.

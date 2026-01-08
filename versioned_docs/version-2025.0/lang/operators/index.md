@@ -9,16 +9,24 @@ There are three kinds of operators: **unary**, **binary** and **ternary**.
 
 - **Unary** operators are used with **only one** expression: ``-2``, where ``-`` 
 is the unary operator used to set compatible numeric value negative.
-- **Binary** ones are used with **two** expressions: ``1 + 2``.
-- **Ternary** are the rarest ones, at this moment, only the _Drift Conditional_
+- **Binary** ones are used with **two** expressions: ``1 + 2`` or Take-If expression ``condition ? value``.
+- **Ternary** are the rarest ones, at this moment, only the _DCE_
 are ternary operators: ``a == b ? 1 : 0``, where ``?`` and ``:`` are both ternary
 operators.
 
 The expressions used with an operator are called **operands**.
 
+## Unary Operators
+
+Unary operators are used with **only one operand**.
+
+There are two unary operators:
+- ``-`` to set a numeric value negative.
+- ``!`` to negate a boolean value.
+
 ## Assignment
 
-It is one of the most used operators. The assignment permits defining a new variable
+The ``=`` operator is one of the most used operators. It permits defining a new variable
 or assigning a new value to an existing variable.
 
 **Variable declaration:**
@@ -41,7 +49,7 @@ fun say(message) {
 }
 
 say(message = "Hello, World!")
-// Here, the '=' symbol assigns a value to a named parameter. Not required for positional ones.
+// Here, the '=' symbol assigns a value to a named parameter. Optional for positional ones.
 ```
 
 ## Arithmetic 
@@ -69,12 +77,6 @@ let a = 1000000000000000        // It overflows Int type, so Drift will apply In
 let b: Int = 1000000000000000   // It overflows Int type, an exception will throw
 let c: Int64 = 1000000000000000 // It does not overflow Int64 type
 ```
-
-### Overflow Operators
-
-:::warning
-At this moment, Drift does not implement overflow methods.
-:::
 
 ### Special behaviors
 
@@ -124,19 +126,3 @@ Adding parentheses around an operation will give it higher priority.
 (5 + 1) * 3 / 4
 // Parenthesis' priority is higher than multiplication
 ```
-
-### Operator Methods
-
-:::warning
-At this moment, Drift does not implement operators methods.
-:::
-
-### ``+-`` and ``-+`` Operators
-
-:::warning
-At this moment, Drift does not implement these operators.
-:::
-
-They will permit respectively to:
-- ``+-``: increment two-length container's first element and decrement second one
-- ``-+``: decrement two-length container's first element and increment second one
