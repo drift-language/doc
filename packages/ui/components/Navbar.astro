@@ -3,9 +3,9 @@ export interface Props { current?: string; section?: string; }
 const { current, section } = Astro.props;
 const links = [
   { href: 'https://driftlang.dev',          label: 'Home'     },
-  { href: 'https://docs.driftlang.dev',     label: 'Docs'     },
+  // { href: 'https://docs.driftlang.dev',     label: 'Docs'     },
   { href: 'https://news.driftlang.dev',     label: 'Newsroom' },
-  { href: 'https://gotthard.driftlang.dev', label: 'Gotthard' },
+  // { href: 'https://gotthard.driftlang.dev', label: 'Gotthard' },
 ];
 ---
 <nav class:list={[

@@ -1,0 +1,516 @@
+---
+import Base from '../layouts/Base.astro';
+
+const GOTTHARD_GROUPS: Array<{transform?: string; d: string; color: string}> = [
+  {
+    transform: 'matrix(0.928851,0,0,0.962553,25.9182,41.637)',
+    d: 'M696.269,1075.36C697.322,1075.07 697.379,1075.08 698.341,1075.58C698.947,1075.9 699.274,1076.58 699.646,1077.14C699.773,1077.33 701.061,1082.01 701.178,1082.44C716.831,1139.29 697.491,1169.39 611.199,1205.18C568.258,1222.99 526.001,1235.31 523.323,1236.11C416.871,1268.11 348.618,1276.67 276.502,1402.77C276.061,1403.55 276.022,1403.57 275.146,1403.82C275.129,1403.82 273.421,1403.64 273.415,1403.63C273.056,1403.2 272.504,1402.86 272.344,1402.33C272.184,1401.8 272.382,1401.21 272.527,1400.67C272.598,1400.41 276.629,1393.57 276.991,1392.96C360.351,1251.6 441.965,1262.6 577.543,1212.59C692.556,1170.16 712.434,1141.5 695.293,1081.59C694.961,1080.43 694.488,1078.86 694.417,1078.62C694.111,1077.61 694.121,1077.55 694.648,1076.62C695.174,1075.7 695.217,1075.66 696.269,1075.36Z',
+    color: '#2997FF',
+  },
+  {
+    transform: 'matrix(1.0063,0,0,1.00146,0.199229,-0.87865)',
+    d: 'M600.863,1131.01C600.608,1131.92 600.575,1131.96 599.754,1132.42C599.236,1132.71 598.58,1132.67 597.987,1132.64C597.688,1132.63 592.667,1130.93 563.233,1123.38C462.692,1097.6 357.08,1072.81 241.429,914.928C161.796,806.22 79.505,644.623 -31.644,602.66C-32.299,602.412 -32.307,602.429 -32.339,602.399C-32.727,602.036 -33.28,601.792 -33.502,601.308C-33.509,601.293 -33.569,599.7 -33.563,599.693C-33.203,599.302 -32.96,598.747 -32.478,598.525C-31.997,598.302 -31.417,598.411 -30.889,598.456C-30.628,598.478 -26.367,600.199 -25.976,600.356C92.278,648.09 177.605,826.338 260.972,932.585C382.956,1088.05 494.152,1098.46 599.242,1128.11C600.15,1128.37 600.186,1128.4 600.648,1129.23C601.109,1130.05 601.117,1130.1 600.863,1131.01Z',
+    color: '#56ccf2',
+  },
+  {
+    transform: 'matrix(1.0394,0,0,1.00777,-40.7862,-7.73797)',
+    d: 'M1193.88,1148.41C1193.79,1149.29 1193.77,1149.33 1193.1,1149.88C1192.68,1150.23 1192.09,1150.27 1191.55,1150.36C1191.34,1150.4 1187.17,1149.83 1186.79,1149.78C1055.09,1131.92 1035.81,980.849 976.688,938.158C975.849,937.552 975.689,937.605 975.505,936.565C975.502,936.549 975.825,935.001 975.833,934.996C976.264,934.708 976.625,934.235 977.13,934.139C978.149,933.947 978.16,934.122 979.01,934.735C1040.11,978.798 1058.24,1130.94 1191.21,1145.91C1191.95,1145.99 1191.96,1145.97 1192,1146C1193.31,1146.74 1193.34,1146.7 1193.42,1146.8C1193.96,1147.49 1193.97,1147.53 1193.88,1148.41Z',
+    color: '#c4a1ff',
+  },
+  {
+    transform: 'matrix(1.03168,0,0,1.03864,-59.5212,-7.47331)',
+    d: 'M1880.07,194.595L1880.23,194.728C1870.78,208.596 1645.41,584.079 1580.46,644.825C1469.52,748.57 1423.79,721.135 1305.58,839.017C1277.72,866.803 1256.94,891.493 1250.96,898.025C1205.8,947.334 1158.72,959.47 1143.79,966.098C1106.94,982.465 1111.14,988.411 1088.48,1019.51C1087.31,1021.1 1086.18,1022.62 1086.18,1022.62C1085.71,1022.9 1085.31,1023.37 1084.77,1023.45C1084.75,1023.45 1083.16,1023.06 1083.16,1023.05C1082.88,1022.58 1082.4,1022.19 1082.32,1021.65C1082.24,1021.11 1082.51,1020.57 1082.72,1020.07C1082.85,1019.75 1086.83,1014.96 1095.57,1001.56C1107.7,982.973 1111.2,975.867 1142.03,962.168C1158.15,955.004 1206.21,942.887 1252.03,890.304C1324.33,807.319 1372.14,771.918 1421.06,744.898C1469.05,718.392 1512.19,702.792 1577.53,641.735C1642.53,580.992 1872.6,197.733 1877.05,192.195C1877.73,191.348 1878.62,191.39 1878.77,191.397C1878.79,191.398 1880.07,191.996 1880.18,192.048C1880.42,192.162 1880.19,192.262 1880.07,194.595ZM1880.05,194.829C1880.05,194.859 1880.05,194.888 1880.05,194.918L1880.1,194.873L1880.05,194.829Z',
+    color: '#7c3aed',
+  },
+  {
+    transform: 'matrix(1.21405,0,0,1.28689,-398.305,-199.191)',
+    d: 'M1119.28,1204.96C1118.38,1203.77 1119.54,1202.76 1119.69,1202.63C1120.4,1202.02 1168.36,1170.56 1214.56,1134.83C1324.22,1050.03 1331.12,1014.26 1451.34,916.025C1566.81,821.672 1848.66,698.07 1856.45,694.433C1858.55,693.451 1858.49,693.331 1860.11,692.844C1861.38,692.459 1861.4,692.784 1862.41,693.617C1863.2,694.273 1861.73,695.666 1861.59,695.797C1861.4,695.974 1861.16,696.095 1860.92,696.204C1860.27,696.505 1860.23,696.434 1852.63,699.838C1750.27,745.688 1546.52,842.672 1453.66,918.551C1307.1,1038.3 1328.72,1065.77 1125.52,1202.82C1125.21,1203.03 1121.76,1205.36 1121.75,1205.36C1120.53,1205.62 1120.54,1205.66 1120.43,1205.64C1119.73,1205.53 1119.69,1205.52 1119.28,1204.96Z',
+    color: '#06b6d4',
+  },
+  {
+    transform: 'matrix(1.01278,0,0,1.03048,-23.9374,-28.9333)',
+    d: 'M1200.84,1550.53C1200.39,1549.8 1200.38,1549.76 1200.58,1548.93C1200.86,1547.79 1201.08,1547.9 1202.1,1547.28C1296.67,1489.69 1305.34,1393.06 1426.48,1256.23C1486.3,1188.66 1544.95,1147.59 1871.56,947.659C1872.27,947.224 1872.31,947.219 1873.13,947.405C1873.14,947.409 1874.43,948.312 1874.43,948.321C1874.69,949.898 1875.09,950.2 1873.77,951.121C1871.98,952.36 1725.34,1041.45 1630.53,1102.43C1498.98,1187.06 1463.14,1219.23 1418.04,1272.4C1307.34,1402.92 1297.3,1494.43 1203.8,1551.22C1203.07,1551.66 1203.02,1551.67 1202.18,1551.47C1201.34,1551.28 1201.3,1551.25 1200.84,1550.53Z',
+    color: '#2997FF',
+  },
+  {
+    transform: 'matrix(1.00893,0,0,1.00827,-9.2349,0.192374)',
+    d: 'M1489.1,717.636C1488.4,718.161 1488.36,718.17 1487.49,718.044C1486.94,717.964 1486.46,717.583 1486.06,717.201C1485.82,716.971 1476.27,704.005 1475.43,702.855C1253.94,402.073 1133.86,112.007 1032.08,-22.012C1031.57,-22.681 1031.56,-22.724 1031.68,-23.557C1031.68,-23.573 1032.48,-24.941 1032.49,-24.943C1033,-25.078 1033.5,-25.412 1034.02,-25.341C1034.55,-25.269 1034.98,-24.878 1035.39,-24.546C1035.62,-24.366 1040.44,-17.818 1040.87,-17.229C1142.67,121.138 1264.85,413.193 1488.21,712.796C1489.54,714.576 1489.55,714.57 1489.55,714.595C1489.93,716.077 1489.97,716.071 1489.95,716.203C1489.83,717.071 1489.81,717.111 1489.1,717.636Z',
+    color: '#a78bfa',
+  },
+  {
+    transform: 'matrix(0.995775,0,0,0.987126,1.82269,-0.145787)',
+    d: 'M1249.65,919.624C1248.8,919.899 1248.75,919.892 1247.96,919.48C1247.46,919.22 1247.14,918.678 1246.86,918.184C1246.71,917.922 1244.29,909.882 1244.07,909.159C1206.69,785.473 1228.46,733.273 1149.16,642.197C1086.66,570.422 962.06,540.88 851.519,451.121C754.739,372.536 518.993,27.316 431.158,-9.139C430.12,-9.57 429.943,-9.451 429.503,-10.488C429.496,-10.504 429.478,-12.12 429.484,-12.126C429.858,-12.513 430.119,-13.069 430.612,-13.282C431.661,-13.735 431.709,-13.522 432.766,-13.083C522.09,23.964 756.352,367.596 853.666,447.265C907.558,491.386 969.611,523.013 1015.46,546.932C1069.35,575.04 1119.5,601.449 1152.45,639.276C1234.29,733.221 1210.15,786.751 1250.61,915.3C1251.07,916.773 1251.09,916.769 1251.09,916.82C1250.95,918.386 1251,918.396 1250.94,918.517C1250.53,919.317 1250.5,919.35 1249.65,919.624Z',
+    color: '#56ccf2',
+  },
+  {
+    transform: 'matrix(1.0077,0,0,1.00843,-32.2564,-27.7563)',
+    d: 'M1004.19,958.892C1002.83,960.438 1001.12,959.261 1000.91,959.112C999.994,958.484 968.23,929.928 951.994,916.781C925.245,895.123 908.731,887.759 857.542,867.235C832.996,857.393 721.436,790.141 709.752,783.545C570.057,704.686 308.154,551.949 144.92,402.942C69.553,334.144 51.584,299.564 31.623,289.988C30.625,289.509 30.44,289.623 30.055,288.587C30.049,288.571 30.109,286.991 30.115,286.984C30.503,286.624 30.787,286.093 31.284,285.909C32.359,285.51 32.397,285.729 33.43,286.223C71.951,304.648 97.849,403.143 488.769,647.094C603.016,718.389 704.397,774.67 715.422,781.131C733.973,792.003 836.705,853.633 859.065,862.661C904.503,881.007 924.018,888.945 949.584,908.844C963.286,919.508 979.231,933.872 1003.97,955.605C1004.68,956.224 1004.7,956.269 1004.76,957.205C1004.82,958.14 1004.81,958.188 1004.19,958.892Z',
+    color: '#1d4ed8',
+  },
+  {
+    transform: 'matrix(1.09141,0,0,1.0862,-121.182,-145.129)',
+    d: 'M103.57,1461.52C103.581,1461.28 103.648,1459.74 105.749,1459.5C106.079,1459.46 112.581,1459.83 113.174,1459.86C136.6,1461.16 175.717,1465.84 321.184,1492.52C323.175,1492.88 402.495,1507.47 452.678,1517.3C718.329,1569.38 727.718,1591.57 750.033,1587.03C752.187,1586.59 752.164,1586.45 752.353,1586.48C752.837,1586.55 753.383,1586.44 753.806,1586.68C753.819,1586.69 754.704,1587.86 754.703,1587.87C754.637,1588.36 754.746,1588.9 754.5,1589.33C754.253,1589.75 753.758,1589.98 753.336,1590.23C753.334,1590.23 751.77,1590.65 750.185,1590.95C727.916,1595.12 719.274,1575.97 498.715,1530.8C493.602,1529.75 456.065,1521.8 340.368,1500.4C156.044,1466.31 129.369,1464.77 105.575,1463.71C104.731,1463.68 104.692,1463.66 104.121,1463.03C103.551,1462.4 103.533,1462.36 103.57,1461.52Z',
+    color: '#06b6d4',
+  },
+  {
+    transform: 'matrix(0.995257,0,0,0.984648,6.72718,17.6381)',
+    d: 'M978.115,934.423C978.6,935.365 978.602,935.42 978.286,936.433C977.88,937.735 977.671,937.634 976.472,938.261C900.815,977.85 801.508,957.118 611.098,972.748C564.508,976.572 530.471,980.324 492.187,985.708C491.344,985.827 490.72,985.357 490.616,985.278C490.602,985.267 489.786,983.899 489.788,983.89C489.92,983.366 489.87,982.752 490.19,982.318C490.511,981.884 491.072,981.684 491.568,981.479C491.582,981.473 516.107,977.709 540.545,974.587C594.007,967.759 651.749,962.342 744.086,960.483C852.788,958.296 919.643,962.027 974.597,933.302C975.529,932.814 975.584,932.811 976.584,933.13C977.586,933.449 977.63,933.482 978.115,934.423Z',
+    color: '#c4a1ff',
+  },
+  {
+    transform: 'matrix(1.05037,0,0,1.06355,-52.1584,-61.3433)',
+    d: 'M663.102,1012.18C663.103,1012.18 663.105,1012.18 663.106,1012.17C665.627,1012.61 680.551,1011.69 734.229,1008.72C797.748,1005.19 813.02,1004.7 841.21,1002.14C941.014,993.076 970.206,975.276 1001.37,960.654C1002.2,960.266 1002.25,960.266 1003.11,960.569C1003.12,960.574 1004.41,961.72 1004.41,961.728C1004.44,962.298 1004.68,962.9 1004.49,963.437C1004.3,963.974 1003.77,964.341 1003.33,964.71C1003.33,964.717 1001.56,965.53 996.818,967.815C962.805,984.215 924.62,1003.42 795.66,1009.88C677.544,1015.8 677.549,1015.91 669.224,1016.18C663,1016.38 661.747,1016.25 660.604,1015.21C659.393,1014.11 659.844,1013.85 660.437,1012.33C660.44,1012.32 661.828,1011.72 661.844,1011.72C661.905,1011.71 662.733,1012.04 663.102,1012.18Z',
+    color: '#2997FF',
+  },
+  {
+    transform: 'matrix(1.01955,0,0,1.00928,-26.5804,-16.5719)',
+    d: 'M1223.93,1552.04C1223.36,1552.87 1223.32,1552.89 1222.34,1553.06C1221.11,1553.28 1221.09,1553.08 1220.08,1552.35C1185.02,1527.09 1185.84,1488.41 1129.47,1453.43C1070.24,1416.66 1021.3,1414.79 945.648,1338.08C874.531,1265.97 840.833,1252.45 790.768,1225.98C758.113,1208.71 727.076,1190.04 683.098,1155.95C682.437,1155.44 682.418,1155.4 682.309,1154.57C682.307,1154.55 682.714,1153.02 682.721,1153.02C683.171,1152.76 683.56,1152.31 684.073,1152.25C684.595,1152.17 685.133,1152.4 685.602,1152.63C686.262,1152.97 714.046,1175.41 749.427,1197.39C824.396,1243.99 857.312,1242.24 947.752,1333.28C967.343,1353.01 992.973,1376.99 1031.33,1398.37C1066.31,1417.87 1099.73,1428.41 1134.16,1450.33C1189.37,1485.47 1189.52,1524.35 1223.34,1548.57C1224.15,1549.15 1224.17,1549.2 1224.34,1550.19C1224.51,1551.17 1224.5,1551.23 1223.93,1552.04Z',
+    color: '#7c3aed',
+  },
+  {
+    transform: 'matrix(0.954447,0,0,0.970375,30.9426,26.365)',
+    d: 'M486.684,991.115C484.814,989.17 484.537,989.259 484.659,988.992C484.888,988.491 484.945,987.867 485.352,987.49C485.474,987.377 486.139,986.761 487.377,986.944C492.473,987.699 628.477,1014.63 639.163,1017.61C681.346,1029.39 703.985,1066.74 650.305,1110.17C603.602,1147.95 519.946,1174.31 458.163,1194.36C384.708,1218.19 314.925,1241.13 282.337,1278.85C247.943,1318.66 245.931,1423.22 313.908,1512.53C314.664,1513.52 314.695,1513.51 314.716,1513.59C314.874,1514.19 315.273,1514.78 315.186,1515.4C315.184,1515.41 314.226,1517.02 314.216,1517.02C313.605,1517.18 313.005,1517.57 312.379,1517.48C311.753,1517.4 311.226,1516.94 310.74,1516.55C310.737,1516.54 308.804,1514.04 306.719,1511.19C241.089,1421.71 242.45,1316.98 278.804,1275.24C337.342,1208.03 508.733,1187.23 614.873,1127.68C689.018,1086.09 688.143,1048.53 656.05,1029.72C648.787,1025.47 641.52,1023.16 637.292,1021.99C627.72,1019.36 498.201,993.216 486.67,991.226L486.684,991.115ZM486.731,991.164L486.726,991.23L486.798,991.235C486.775,991.211 486.753,991.187 486.731,991.164Z',
+    color: '#56ccf2',
+  },
+  {
+    d: 'M1897.37,1772.57C1896.94,1773.4 1896.9,1773.43 1896.01,1773.7C1895.45,1773.88 1894.82,1773.72 1894.26,1773.55C1893.56,1773.35 1846.18,1747.55 1777.8,1717.8C1323.01,1519.98 913.601,1565.84 887.442,1566.85C767.312,1571.49 614.284,1585.23 483.661,1632.56C317.449,1692.78 261.252,1779.77 176.051,1837.44C175.944,1837.51 175.331,1837.93 174.471,1837.76C174.455,1837.76 173.123,1836.88 173.121,1836.87C173.014,1836.35 172.706,1835.82 172.808,1835.3C172.909,1834.78 173.331,1834.36 173.684,1833.96C174.019,1833.58 187.385,1825.29 212.02,1804.94C322.625,1713.6 421.842,1580.27 884.233,1562.27C894.666,1561.87 898.108,1561.22 921.272,1559.8C1041.38,1552.41 1460.49,1541.34 1894.93,1768.68L1896.41,1769.45C1897.44,1770.7 1897.49,1770.68 1897.53,1770.81C1897.81,1771.7 1897.81,1771.75 1897.37,1772.57Z',
+    color: '#1d4ed8',
+  },
+  {
+    d: 'M1758.92,1832.98C1758.1,1834.83 1756.18,1834.21 1755.94,1834.13C1754.58,1833.69 1693.64,1805.59 1609.67,1773.51C1361.34,1678.63 1189.32,1653.91 1116.06,1645.63C765.439,1606 595.239,1721.45 509.283,1814.98C495.076,1830.44 485.557,1842.79 485.465,1842.84C484.997,1843.1 484.591,1843.55 484.061,1843.61C484.044,1843.61 482.51,1843.17 482.506,1843.16C482.247,1842.7 481.795,1842.29 481.735,1841.76C481.674,1841.23 481.927,1840.7 482.17,1840.22C482.174,1840.21 484.63,1837.12 487.058,1834.16C570.895,1731.85 742.349,1600.25 1112.05,1640.58C1396.86,1671.66 1670.23,1791.01 1757.77,1829.99C1757.9,1830.04 1758.63,1830.37 1758.97,1831.25C1759.29,1832.1 1759.29,1832.15 1758.92,1832.98Z',
+    color: '#4f46e5',
+  },
+  {
+    d: 'M1375.22,1860.83C1375.14,1861.08 1374.59,1862.69 1372.3,1862.28C1371.39,1862.12 1308.57,1840.04 1243.77,1822.81C1060.6,1774.1 979.217,1794.38 827.367,1845.2C826.563,1845.47 826.519,1845.47 825.761,1845.09C825.746,1845.08 824.697,1843.88 824.698,1843.87C824.734,1843.34 824.576,1842.75 824.813,1842.27C825.051,1841.8 825.542,1841.46 826.016,1841.22C826.321,1841.06 843.596,1835.33 845.127,1834.82C1015.6,1778.24 1100.6,1765.94 1367.22,1855.69C1369.58,1856.48 1373.79,1857.9 1373.79,1857.9C1375,1858.97 1375.04,1858.94 1375.1,1859.07C1375.52,1859.9 1375.52,1859.95 1375.22,1860.83Z',
+    color: '#06b6d4',
+  },
+  {
+    d: 'M-8.686,1316.65C-8.493,1315.51 -8.458,1315.46 -7.516,1314.79C-6.923,1314.37 -6.113,1314.36 -5.388,1314.3C-4.893,1314.25 11.827,1317.61 26.597,1319.71C35.027,1320.9 66.93,1325.62 139.085,1326.03C218.782,1326.48 257.202,1320.22 262.178,1319.47C269.409,1318.39 274.531,1317.38 274.56,1317.39C275.083,1317.5 275.685,1317.42 276.127,1317.72C276.141,1317.73 277.014,1319.07 277.012,1319.07C276.904,1319.6 276.979,1320.2 276.679,1320.64C276.379,1321.08 275.827,1321.29 275.345,1321.52C275.114,1321.63 268.987,1322.72 268.433,1322.82C230.898,1329.49 186.702,1330.85 175.941,1331.18C155.532,1331.8 86.441,1332.7 35.881,1326.7C17.852,1324.56 6.614,1322.17 -6.337,1319.95C-7.475,1319.76 -7.524,1319.73 -8.193,1318.79C-8.861,1317.84 -8.878,1317.79 -8.686,1316.65Z',
+    color: '#a78bfa',
+  },
+];
+const FEATURES = [];
+---
+
+<Base title="Meet Drift Gotthard" current="Home">
+  <div class:list={["bg-black min-h-screen relative"]}>
+
+    <!-- Atmospheric gradient blobs -->
+    <div
+      class:list={["fixed inset-0 pointer-events-none z-0 overflow-hidden"]}
+      aria-hidden="true"
+    >
+      <div class:list={[
+        "absolute rounded-full blur-[100px] will-change-transform",
+        "w-[680px] h-[680px] -top-[180px] -right-[180px]",
+        "bg-[radial-gradient(circle,rgba(29,78,216,0.52)_0%,transparent_68%)]",
+        "animate-[blobDrift1_24s_ease-in-out_infinite]",
+        "max-sm:w-[400px] max-sm:h-[400px]",
+      ]}></div>
+      <div class:list={[
+        "absolute rounded-full blur-[100px] will-change-transform",
+        "w-[520px] h-[520px] top-[35%] -left-[170px]",
+        "bg-[radial-gradient(circle,rgba(109,40,217,0.42)_0%,transparent_68%)]",
+        "animate-[blobDrift2_30s_ease-in-out_infinite]",
+        "max-sm:w-[320px] max-sm:h-[320px]",
+      ]}></div>
+      <div class:list={[
+        "absolute rounded-full blur-[100px] will-change-transform",
+        "w-[440px] h-[440px] bottom-[12%] right-[8%]",
+        "bg-[radial-gradient(circle,rgba(6,182,212,0.30)_0%,transparent_68%)]",
+        "animate-[blobDrift3_21s_ease-in-out_infinite]",
+        "max-sm:w-[280px] max-sm:h-[280px]",
+      ]}></div>
+    </div>
+
+    <!-- Gotthard line drawing SVG -->
+    <svg
+      class:list={["fixed inset-0 w-full h-full pointer-events-none z-[1]"]}
+      viewBox="0 0 1866 1825"
+      preserveAspectRatio="xMidYMid slice"
+      xmlns="http://www.w3.org/2000/svg"
+      opacity="0.13"
+      aria-hidden="true"
+    >
+      {GOTTHARD_GROUPS.map((item, i) =>
+        item.transform ? (
+          <g transform={item.transform}>
+            <path d={item.d} fill={item.color} class="gotthard-path" style={`animation-delay:${(0.2 + i * 0.08).toFixed(2)}s`} />
+          </g>
+        ) : (
+          <path d={item.d} fill={item.color} class="gotthard-path" style={`animation-delay:${(0.2 + i * 0.08).toFixed(2)}s`} />
+        )
+      )}
+    </svg>
+
+    <!-- Hero -->
+    <section class:list={[
+      "min-h-screen flex flex-col items-center justify-center text-center",
+      "px-8 pt-28 pb-20 relative z-[2]",
+    ]}>
+      <div class:list={["max-w-[860px] flex flex-col gap-y-5 items-center"]}>
+        <p class:list={[
+          "[font-family:var(--drift-font-mono)] text-[0.7rem] tracking-[0.14em] uppercase",
+          "text-[#8a8a94] mb-10 animate-[fadeUp_0.6s_ease_both_0.1s]",
+        ]}>
+          Coming · 2026
+        </p>
+        <div class:list={[
+          "flex flex-col items-center leading-none mb-8",
+          "animate-[fadeUp_0.9s_cubic-bezier(.25,.1,.25,1)_both_0.2s]",
+        ]}>
+          <span class:list={[
+            "text-[clamp(1.8rem,3.5vw,2.6rem)] font-light tracking-[-0.025em]",
+            "text-[#96969f] max-sm:text-[1.4rem]",
+          ]}>
+            Meet
+          </span>
+          <span class:list={[
+            "[font-family:'Chillax',var(--drift-font-sans)] font-bold tracking-[-0.05em]",
+            "text-[clamp(5rem,13vw,10rem)] text-[#F5F5F7] leading-[0.92]",
+            "[font-feature-settings:'ss01'_1]",
+            "max-sm:text-[clamp(3.5rem,16vw,5.5rem)] max-sm:tracking-[-0.055em]",
+          ]}>
+            Drift
+          </span>
+          <span class:list={[
+            "font-extrabold tracking-[-0.05em] leading-[0.92]",
+            "text-[clamp(5rem,13vw,10rem)]",
+            "bg-[linear-gradient(130deg,#2997FF_0%,#56ccf2_42%,#c4a1ff_100%)] bg-clip-text text-transparent",
+            "max-sm:text-[clamp(3.5rem,16vw,5.5rem)] max-sm:tracking-[-0.055em]",
+          ]}>
+            Gotthard
+          </span>
+        </div>
+        <p class:list={[
+          "text-[clamp(1rem,1.7vw,1.15rem)] text-[#a8a8b2] leading-[1.68]",
+          "max-w-[480px] mb-11 animate-[fadeUp_0.8s_cubic-bezier(.25,.1,.25,1)_both_0.38s]",
+        ]}>
+          The next evolution of the language.<br />
+          More complete. More capable. Still entirely yours.
+        </p>
+        <a
+          class:list={[
+            "inline-flex items-center gap-[0.35em]",
+            "text-[0.95rem] font-medium text-[#2997FF]! no-underline! tracking-[-0.01em]",
+            "transition-opacity duration-150 hover:opacity-[0.68]!",
+            "animate-[fadeUp_0.6s_ease_both_0.52s]",
+          ]}
+          href="https://github.com/drift-language/drift"
+        >
+          Follow on GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <div
+        class:list={["absolute bottom-10 left-1/2 -translate-x-1/2"]}
+        aria-hidden="true"
+      >
+        <span class:list={[
+          "block w-px h-7",
+          "bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.22))]",
+          "animate-[scrollHint_1.8s_ease-in-out_infinite]",
+        ]}></span>
+      </div>
+    </section>
+
+    { false && (
+    <!-- Features scroll -->
+    <div class:list={["h-[600vh] relative z-[2]"]} id="feat-scroll">
+      <div class:list={["sticky top-0 h-screen overflow-hidden border-t border-white/[0.06]"]}>
+        <p class:list={[
+          "absolute top-8 left-1/2 -translate-x-1/2",
+          "[font-family:var(--drift-font-mono)] text-[0.65rem] tracking-[0.12em] uppercase",
+          "text-[#6e6e78] whitespace-nowrap pointer-events-none",
+        ]}>
+          Designed in France
+        </p>
+
+        {FEATURES.map((feat, i) => (
+          <div
+            class:list={[
+              "absolute inset-0 flex items-center justify-center",
+              "pt-20 px-12 pb-16 pointer-events-none [will-change:opacity,transform]",
+              "max-lg:items-start max-lg:px-8 max-lg:overflow-y-auto",
+            ]}
+            data-feat-layer={i}
+            style={i === 0 ? 'opacity:1;transform:translateY(0)' : 'opacity:0;transform:translateY(30px)'}
+          >
+            <div class:list={[
+              "grid grid-cols-[5fr_7fr] gap-[4.5rem] items-center max-w-[1100px] w-full",
+              "max-lg:grid-cols-1 max-lg:gap-10 max-lg:max-w-[600px]",
+            ]}>
+              <div class:list={["flex flex-col"]}>
+                <span class:list={[
+                  "[font-family:var(--drift-font-mono)] text-[0.65rem] tracking-[0.06em]",
+                  "text-[#6e6e78] mb-[1.6rem]",
+                ]}>
+                  {feat.index}&nbsp;/&nbsp;{String(FEATURES.length).padStart(2, '0')}
+                </span>
+                <h2 class:list={[
+                  "text-[clamp(2rem,4.2vw,3.2rem)] font-bold tracking-[-0.04em] leading-[1.02]",
+                  "text-[#F5F5F7] mb-[0.7rem] max-sm:text-[clamp(1.8rem,7vw,2.4rem)]",
+                ]}>
+                  {feat.name}
+                </h2>
+                <p class:list={[
+                  "text-[1.05rem] font-medium tracking-[-0.01em] text-[#2997FF] mb-5",
+                ]}>
+                  {feat.tagline}
+                </p>
+                <p class:list={[
+                  "text-[0.93rem] text-[#a8a8b2] leading-[1.72] max-w-[360px] max-lg:max-w-full",
+                ]}>
+                  {feat.description}
+                </p>
+              </div>
+              <div class:list={["flex flex-col"]}>
+                <div class:list={[
+                  "bg-white/[0.038] border border-white/[0.08] rounded-[14px]",
+                  "overflow-hidden backdrop-blur-[6px]",
+                ]}>
+                  <div class:list={[
+                    "flex items-center gap-[6px] py-[9px] px-[14px]",
+                    "bg-white/[0.03] border-b border-white/[0.06]",
+                  ]}>
+                    <span class:list={["w-[10px] h-[10px] rounded-full shrink-0 bg-[#FF5F57]"]}></span>
+                    <span class:list={["w-[10px] h-[10px] rounded-full shrink-0 bg-[#FFBD2E]"]}></span>
+                    <span class:list={["w-[10px] h-[10px] rounded-full shrink-0 bg-[#28C840]"]}></span>
+                    <span class:list={[
+                      "ml-[6px] [font-family:var(--drift-font-mono)] text-[0.65rem] text-[#6e6e78]",
+                    ]}>
+                      main.drift
+                    </span>
+                  </div>
+                  <pre
+                    class:list={[
+                      "m-0 pt-[1.4rem] px-[1.5rem] pb-[1.5rem]",
+                      "[font-family:var(--drift-font-mono)] text-[0.82rem] leading-[1.85]",
+                      "text-[#DFDFE0] bg-transparent border-none overflow-auto shadow-none",
+                    ]}
+                    set:html={feat.code}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <div class:list={[
+          "absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-[0.7rem]",
+        ]}>
+          <div class:list={["w-24 h-[1.5px] bg-white/[0.08] rounded-[1px] overflow-hidden"]}>
+            <div
+              class:list={["h-full bg-[#2997FF] rounded-[1px] w-0 [transition:width_50ms_linear]"]}
+              id="feat-progress-fill"
+            ></div>
+          </div>
+          <div class:list={["flex gap-[7px] items-center"]} id="feat-dots">
+            {FEATURES.map((_, i) => (
+              <span
+                class:list={[
+                  "w-1 h-1 rounded-full bg-white/[0.15] transition-[background-color,transform] duration-300",
+                  { featDotActive: i === 0 },
+                ]}
+                data-dot={i}
+              ></span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statement -->
+    <section class:list={[
+      "js-reveal relative z-[2]",
+      "min-h-[70vh] flex flex-col items-center justify-center text-center",
+      "py-28 px-8 border-t border-white/[0.06]",
+    ]}>
+      <h2 class:list={[
+        "text-[clamp(3rem,7.5vw,6.5rem)] font-bold tracking-[-0.055em] leading-[1.05]",
+        "text-[#F5F5F7] mb-8 max-sm:text-[clamp(2.2rem,10vw,3.5rem)]",
+      ]}>
+        The foundation<br />
+        <span class:list={[
+          "bg-[linear-gradient(130deg,#2997FF_0%,#56ccf2_42%,#c4a1ff_100%)] bg-clip-text text-transparent",
+        ]}>
+          is here.
+        </span>
+      </h2>
+      <p class:list={[
+        "text-base text-[#8a8a94] leading-[1.72] max-w-[500px]",
+        "[transition:opacity_0.8s_cubic-bezier(.25,.1,.25,1)_0.15s,transform_0.8s_cubic-bezier(.25,.1,.25,1)_0.15s]",
+      ]}>
+        Gotthard establishes everything the language needs to grow — a complete runtime,
+        a standard library, and the contracts that make Drift programs reliable.
+      </p>
+    </section>
+    )}
+
+    <!-- CTA -->
+    <section class:list={[
+      "js-reveal relative z-[2] flex flex-col items-center",
+      "pt-16 px-8 pb-24 border-t border-white/[0.06] gap-5",
+    ]}>
+      <p class:list={[
+        "[font-family:var(--drift-font-mono)] text-[0.65rem] tracking-[0.12em] uppercase text-[#6e6e78]",
+      ]}>
+        Ready to follow along?
+      </p>
+      <a
+        class:list={[
+          "inline-flex items-center gap-[0.35em] bg-[#2997FF]",
+          "text-black! font-semibold text-[0.95rem] py-[0.7rem] px-[1.75rem]",
+          "rounded-full no-underline! tracking-[-0.01em]",
+          "transition-opacity duration-150 hover:opacity-[0.85]!",
+        ]}
+        href="https://github.com/drift-language/drift"
+      >
+        Star on GitHub <span aria-hidden="true">↗</span>
+      </a>
+      <a
+        class:list={[
+          "text-[0.85rem] text-[#8a8a94]! no-underline! transition-colors duration-150",
+          "hover:text-[#c8c8d0]!",
+        ]}
+        href="https://docs.driftlang.dev"
+      >
+        Read the current docs →
+      </a>
+    </section>
+
+  </div>
+</Base>
+
+<style is:global>
+  main { padding: 0 !important; }
+
+  /* Code syntax token colors — inside set:html, not Astro-scoped */
+  .syn-cm { color: #6e6e78; }
+  .syn-kw { color: #2997FF; }
+  .syn-ty { color: #c4a1ff; }
+  .syn-fn { color: #56ccf2; }
+  .syn-st { color: #a8d8a8; }
+</style>
+
+<style>
+  /* Keyframes — not expressible as Tailwind utilities */
+  @keyframes blobDrift1 {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50%       { transform: translate(-28px,44px) scale(1.1); }
+  }
+  @keyframes blobDrift2 {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    50%       { transform: translate(36px,-24px) scale(0.93); }
+  }
+  @keyframes blobDrift3 {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    40%       { transform: translate(-18px,-36px) scale(1.07); }
+  }
+
+  @keyframes drawPath {
+    to { clip-path: inset(0 0% 0 0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollHint {
+    0%   { opacity: 0; transform: translateY(-6px); }
+    50%  { opacity: 1; }
+    100% { opacity: 0; transform: translateY(8px); }
+  }
+
+  /* Gotthard SVG path draw animation */
+  .gotthard-path {
+    clip-path: inset(0 100% 0 0);
+    animation: drawPath 1.2s cubic-bezier(.4, 0, .2, 1) forwards;
+  }
+
+  /* JS-toggled reveal states */
+  .js-reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.95s cubic-bezier(.25,.1,.25,1), transform 0.95s cubic-bezier(.25,.1,.25,1);
+  }
+
+  .js-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* JS-toggled dot active state */
+  .featDotActive {
+    background-color: #2997FF !important;
+    transform: scale(1.4);
+  }
+</style>
+
+<script>
+  // ── Feature scroll ────────────────────────────────────────
+  const featScroll = document.getElementById('feat-scroll');
+  const layers = [...document.querySelectorAll('[data-feat-layer]')] as HTMLElement[];
+  const fill = document.getElementById('feat-progress-fill') as HTMLElement;
+  const dots = [...document.querySelectorAll('[data-dot]')] as HTMLElement[];
+  const N = layers.length;
+
+  function clamp(v: number, lo: number, hi: number) { return Math.max(lo, Math.min(hi, v)); }
+
+  function multiMap(v: number, xs: number[], ys: number[]) {
+    if (v <= xs[0]) return ys[0];
+    if (v >= xs[xs.length - 1]) return ys[ys.length - 1];
+    for (let i = 0; i < xs.length - 1; i++) {
+      if (v <= xs[i + 1]) {
+        const t = (v - xs[i]) / (xs[i + 1] - xs[i]);
+        return ys[i] + (ys[i + 1] - ys[i]) * t;
+      }
+    }
+    return ys[ys.length - 1];
+  }
+
+  // Mirrors Framer Motion useTransform breakpoints from the original page
+  const TRANSITIONS = [
+    { opX: [0, 0.20, 0.25],           opY: [1, 1, 0],    yX: [0.20, 0.25],           yY: [0, -30]      },
+    { opX: [0.20, 0.25, 0.45, 0.50],  opY: [0, 1, 1, 0], yX: [0.20, 0.25, 0.45, 0.50], yY: [30, 0, 0, -30] },
+    { opX: [0.45, 0.50, 0.70, 0.75],  opY: [0, 1, 1, 0], yX: [0.45, 0.50, 0.70, 0.75], yY: [30, 0, 0, -30] },
+    { opX: [0.70, 0.75, 1.0],          opY: [0, 1, 1],    yX: [0.70, 0.75],           yY: [30, 0]        },
+  ];
+
+  function onScroll() {
+    if (!featScroll) return;
+    const rect = featScroll.getBoundingClientRect();
+    const scrollable = rect.height - window.innerHeight;
+    const progress = clamp(-rect.top / scrollable, 0, 1);
+
+    fill.style.width = (progress * 100) + '%';
+
+    const activeIdx = Math.min(N - 1, Math.floor(progress * N));
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('featDotActive', i === activeIdx);
+    });
+
+    layers.forEach((layer, i) => {
+      const t = TRANSITIONS[i];
+      const op = multiMap(progress, t.opX, t.opY);
+      const y  = multiMap(progress, t.yX, t.yY);
+      layer.style.opacity = String(op);
+      layer.style.transform = `translateY(${y}px)`;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ── Intersection Observer reveals ─────────────────────────
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) {
+        (e.target as HTMLElement).classList.add('revealed');
+        observer.unobserve(e.target);
+      }
+    }),
+    { rootMargin: '-100px' }
+  );
+  document.querySelectorAll('.js-reveal').forEach(el => observer.observe(el));
+</script>
