@@ -1,0 +1,179 @@
+---
+import '@drift/ui/tokens';
+import Navbar from '@drift/ui/Navbar';
+import Footer from '@drift/ui/Footer';
+
+export interface Props {
+  title: string;
+  date: Date;
+  category: string;
+  author: string;
+  gradient: string;
+}
+
+const { title, date, category, author, gradient } = Astro.props;
+
+const formatted = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title} — Drift Newsroom</title>
+</head>
+<body>
+  <Navbar current="Newsroom" section="Newsroom" />
+
+  <div class="banner" style={`background: ${gradient}`}>
+    <div class="banner-inner">
+      <span class="category">{category}</span>
+      <h1 class="title">{title}</h1>
+      <p class="meta">{formatted} &nbsp;·&nbsp; {author}</p>
+    </div>
+  </div>
+
+  <main>
+    <article class="prose">
+      <slot />
+    </article>
+  </main>
+
+  <Footer />
+</body>
+</html>
+
+<style is:global>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; }
+  body { background: var(--drift-bg); color: var(--drift-text); font-family: var(--drift-font-sans); min-height: 100vh; }
+</style>
+
+<style>
+  .banner {
+    width: 100%;
+    min-height: 52vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(6,8,14,0.85) 0%, transparent 60%);
+  }
+
+  .banner-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--drift-accent-hi);
+  }
+
+  .title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    color: #f5f5f7;
+    max-width: 760px;
+  }
+
+  .meta {
+    font-size: 0.82rem;
+    color: rgba(219, 232, 241, 0.55);
+  }
+
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .prose {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--drift-text-muted);
+    max-width: 680px;
+  }
+
+  .prose :global(h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--drift-text);
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--drift-text);
+    margin: 2rem 0 0.5rem;
+  }
+
+  .prose :global(p) {
+    margin: 0 0 1.25rem;
+  }
+
+  .prose :global(pre) {
+    background: var(--drift-surface);
+    border: 1px solid var(--drift-border);
+    border-radius: var(--drift-radius-lg);
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    font-family: var(--drift-font-mono);
+    font-size: 0.85rem;
+    line-height: 1.75;
+    margin: 1.5rem 0;
+    color: var(--drift-text);
+  }
+
+  .prose :global(code) {
+    font-family: var(--drift-font-mono);
+    font-size: 0.875em;
+    background: var(--drift-surface);
+    border: 1px solid var(--drift-border);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+    color: var(--drift-accent-hi);
+  }
+
+  .prose :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  .prose :global(ul), .prose :global(ol) {
+    padding-left: 1.5rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .prose :global(li) {
+    margin-bottom: 0.4rem;
+  }
+
+  .prose :global(a) {
+    color: var(--drift-accent-hi);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

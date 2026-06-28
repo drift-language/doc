@@ -1,0 +1,19 @@
+{
+  "name": "driftlang-web",
+  "private": true,
+  "scripts": {
+    "dev:vitrine": "pnpm --filter vitrine dev",
+    "dev:docs": "pnpm --filter docs dev",
+    "dev:gotthard": "pnpm --filter gotthard dev",
+    "dev:news": "pnpm --filter news dev",
+    "dev:25": "pnpm --filter 25 dev",
+    "build:all": "pnpm --filter './apps/*' build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.1",
+    "tailwindcss": "^4.3.1"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "vitrine",
+  "private": true,
+  "scripts": {
+    "dev":   "astro dev",
+    "build": "astro build",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@drift/ui": "workspace:*",
+    "astro": "^4.0.0"
+  }
+}

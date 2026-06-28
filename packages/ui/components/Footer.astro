@@ -1,0 +1,161 @@
+---
+import NTLink from "./util/NTLink.astro";
+
+const year = new Date().getFullYear();
+---
+
+
+<footer class:list={[
+  "grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-16",
+  "px-8 py-6",
+  "border-t border-(--drift-border)",
+  "text-sm text-(--drift-text-faint)",
+  "relative z-10 bg-(--drift-bg)",
+]}>
+
+  <div class:list={[
+    "flex flex-col gap-y-7",
+    "text-justify",
+  ]}>
+
+    <p>Drift © {year}</p>
+
+    <p>
+      Drift and all associated software, documentation, and assets are
+      made available as open-source under the Apache License, Version
+      2.0. Redistribution and use in source or binary forms, with or
+      without modification, are permitted provided that copyright and
+      license notices are preserved. The name "Drift" and its release
+      codenames, including "Gotthard", may not be used to endorse or
+      promote derivative works without prior written permission. <br />
+      © {year} <NTLink href="https://github.com/belicfr">Jonathan</NTLink> &
+      Drift Approved Contributors.
+    </p>
+
+    <p>
+      Drift is provided "as is" without warranty of any kind. The authors
+      and contributors shall not be liable for any damages arising from the
+      use of this software, including but not limited to data loss, system
+      failure, or any other direct or indirect damages.
+    </p>
+
+    <p>
+      Drift may incorporate third-party open-source components, each governed
+      by their respective licenses. A full list of dependencies and their
+      licenses is available in the project repository.
+    </p>
+
+    <p>
+      This software is administered, monitored and designed in France, but its
+      contributors come from all around the world. Any disputes arising from its
+      use shall be governed by French law.
+    </p>
+  </div>
+
+  <div class:list={[
+    "grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between lg:justify-end",
+    "lg:col-start-3",
+  ]}>
+
+    <section class="flex flex-col gap-y-1">
+      <h6 class:list={[
+        "font-medium",
+      ]}>
+
+        Organization
+      </h6>
+
+      <NTLink href="https://github.com/drift-language">
+        About us
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        Our newsroom
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        Contact us
+      </NTLink>
+    </section>
+
+    <section class="flex flex-col gap-y-1">
+      <h6 class:list={[
+        "font-medium",
+      ]}>
+
+        Community
+      </h6>
+
+      <NTLink href="https://github.com/drift-language">
+        GitHub Organization
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        Discord Community
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        X (formerly Twitter)
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        Mastodon
+      </NTLink>
+    </section>
+
+    <section class="flex flex-col gap-y-1">
+      <h6 class:list={[
+        "font-medium",
+      ]}>
+
+        Project
+      </h6>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        Introducing Gotthard
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        Contributing
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        Report an Issue
+      </NTLink>
+
+      <NTLink href="https://gotthard.driftlang.dev">
+        License
+      </NTLink>
+    </section>
+
+    <section class:list={[
+      "flex flex-col gap-y-1",
+    ]}>
+
+      <h6 class:list={[
+        "font-medium",
+      ]}>
+
+        Language
+      </h6>
+
+      <NTLink href="https://docs.driftlang.dev">
+        Documentation
+      </NTLink>
+
+      <NTLink href="https://docs.driftlang.dev">
+        Changelog
+      </NTLink>
+
+      <NTLink href="https://docs.driftlang.dev">
+        Roadmap
+      </NTLink>
+    </section>
+
+    <section>
+      <p>
+        Designed in France
+      </p>
+    </section>
+  </div>
+</footer>

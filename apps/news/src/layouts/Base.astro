@@ -1,0 +1,28 @@
+---
+import '@drift/ui/tokens';
+import Navbar from '@drift/ui/Navbar';
+import Footer from '@drift/ui/Footer';
+export interface Props { title: string; current?: string; }
+const { title, current } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title} — Drift</title>
+  <slot name="head" />
+</head>
+<body>
+  <Navbar current={current} section="Newsroom" />
+  <main><slot /></main>
+  <Footer />
+</body>
+</html>
+<style is:global>
+  @layer base {
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
+    body { background: var(--drift-bg); color: var(--drift-text); font-family: var(--drift-font-sans); min-height: 100vh; }
+    main { padding: 2rem; }
+  }
+</style>

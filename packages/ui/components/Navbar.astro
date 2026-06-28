@@ -1,0 +1,92 @@
+---
+export interface Props { current?: string; section?: string; }
+const { current, section } = Astro.props;
+const links = [
+  { href: 'https://driftlang.dev',          label: 'Home'     },
+  { href: 'https://docs.driftlang.dev',     label: 'Docs'     },
+  { href: 'https://news.driftlang.dev',     label: 'Newsroom' },
+  { href: 'https://gotthard.driftlang.dev', label: 'Gotthard' },
+];
+---
+<nav class:list={[
+  'flex items-center justify-between',
+  'px-8 py-4',
+  'border-b border-[var(--drift-border)] bg-[var(--drift-bg)]',
+  'relative z-10',
+]}>
+  <div class="flex items-baseline gap-[.6rem]">
+    <a
+      href="https://driftlang.dev"
+      class:list={[
+        'text-[1.1rem] font-bold tracking-[.04em]',
+        'text-[var(--drift-text)] no-underline hover:opacity-100',
+        "[font-feature-settings:'ss01'_1]",
+      ]}
+      style="font-family:'Chillax',var(--drift-font-sans)"
+    >Drift</a>
+    {section && <span class="text-base font-medium text-[var(--drift-text)] tracking-[.02em]">{section}</span>}
+  </div>
+
+  <ul class="hidden md:flex gap-8 list-none m-0 p-0">
+    {links.map(l => (
+      <li>
+        <a
+          href={l.href}
+          class:list={[
+            'text-sm tracking-[.06em] no-underline hover:opacity-100 transition-colors duration-150',
+            {
+              'text-[var(--drift-accent-hi)]': l.label === current,
+              'text-[var(--drift-text-muted)] hover:text-[var(--drift-accent-hi)]': l.label !== current,
+            },
+          ]}
+        >{l.label}</a>
+      </li>
+    ))}
+  </ul>
+
+  <button
+    id="nav-toggle"
+    class:list={[
+      'md:hidden flex flex-col justify-center gap-[5px] p-2',
+      'bg-transparent border-0 cursor-pointer text-[var(--drift-text)]',
+    ]}
+    aria-label="Toggle menu"
+    aria-expanded="false"
+  >
+    <span class="block w-5 h-px bg-current"></span>
+    <span class="block w-5 h-px bg-current"></span>
+    <span class="block w-5 h-px bg-current"></span>
+  </button>
+</nav>
+
+<div id="nav-mobile" class:list={[
+  'hidden md:hidden',
+  'bg-[var(--drift-bg)] border-b border-[var(--drift-border)]',
+  'px-8 py-4 relative z-10',
+]}>
+  <ul class="flex flex-col gap-4 list-none m-0 p-0">
+    {links.map(l => (
+      <li>
+        <a
+          href={l.href}
+          class:list={[
+            'text-sm tracking-[.06em] no-underline hover:opacity-100 transition-colors duration-150',
+            {
+              'text-[var(--drift-accent-hi)]': l.label === current,
+              'text-[var(--drift-text-muted)] hover:text-[var(--drift-accent-hi)]': l.label !== current,
+            },
+          ]}
+        >{l.label}</a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('nav-mobile');
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+</script>
