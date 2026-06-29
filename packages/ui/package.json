@@ -5,6 +5,7 @@
   "exports": {
     "./tokens": "./tokens/index.css",
     "./Navbar": "./components/Navbar.astro",
-    "./Footer": "./components/Footer.astro"
+    "./Footer": "./components/Footer.astro",
+    "./NTLink": "./components/util/NTLink.astro"
   }
 }

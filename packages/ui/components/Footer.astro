@@ -6,19 +6,23 @@ const year = new Date().getFullYear();
 
 
 <footer class:list={[
-  "grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-16",
-  "px-8 py-6",
   "border-t border-(--drift-border)",
   "text-sm text-(--drift-text-faint)",
   "relative z-10 bg-(--drift-bg)",
 ]}>
 
+<div class:list={[
+  "max-w-300 mx-auto",
+  "flex flex-col lg:flex-row lg:justify-between gap-10",
+  "px-8 py-6",
+]}>
+
   <div class:list={[
     "flex flex-col gap-y-7",
-    "text-justify",
+    "text-justify lg:max-w-96 shrink-0",
   ]}>
 
-    <p>Drift © {year}</p>
+    <p>Drift © 2025-{year}</p>
 
     <p>
       Drift and all associated software, documentation, and assets are
@@ -53,13 +57,12 @@ const year = new Date().getFullYear();
   </div>
 
   <div class:list={[
-    "grid grid-cols-1 lg:grid-cols-2 gap-10 justify-between lg:justify-end",
-    "lg:col-start-3",
+    "grid grid-cols-1 lg:grid-cols-2 gap-10",
   ]}>
 
     <section class="flex flex-col gap-y-1">
       <h6 class:list={[
-        "font-medium",
+        "font-semibold",
       ]}>
 
         Organization
@@ -80,7 +83,7 @@ const year = new Date().getFullYear();
 
     <section class="flex flex-col gap-y-1">
       <h6 class:list={[
-        "font-medium",
+        "font-semibold",
       ]}>
 
         Community
@@ -105,7 +108,7 @@ const year = new Date().getFullYear();
 
     <section class="flex flex-col gap-y-1">
       <h6 class:list={[
-        "font-medium",
+        "font-semibold",
       ]}>
 
         Project
@@ -133,7 +136,7 @@ const year = new Date().getFullYear();
     ]}>
 
       <h6 class:list={[
-        "font-medium",
+        "font-semibold",
       ]}>
 
         Language
@@ -158,4 +161,6 @@ const year = new Date().getFullYear();
       </p>
     </section>
   </div>
+
+</div>
 </footer>

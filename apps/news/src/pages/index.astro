@@ -25,9 +25,10 @@ function fmt(date: Date) {
     >
 
       <div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(6,8,14,0.92)_0%,rgba(6,8,14,0.2)_70%)]" />
+
       <div class:list={[
-        'absolute bottom-0 left-0 right-0',
-        'p-12 max-[900px]:p-8 max-w-225',
+        'absolute bottom-0 left-0 right-0 mx-auto',
+        'px-8 py-12 max-[900px]:py-8 max-w-300',
         'flex flex-col gap-[0.85rem]',
       ]}>
 
@@ -40,6 +41,7 @@ function fmt(date: Date) {
 
           {featured.data.category}
         </span>
+
         <h1 class:list={[
           'text-[clamp(2rem,4.5vw,3.8rem)] font-bold tracking-[-0.045em] leading-[1.06]',
           'text-[#f5f5f7] max-w-175',
@@ -48,6 +50,7 @@ function fmt(date: Date) {
 
           {featured.data.title}
         </h1>
+
         <p class:list={[
           'text-[clamp(0.9rem,1.4vw,1.05rem)] leading-[1.6] max-w-145',
           'text-[rgba(219,232,241,0.7)]',
@@ -55,6 +58,7 @@ function fmt(date: Date) {
 
           {featured.data.excerpt}
         </p>
+
         <p class="text-[0.78rem] text-[rgba(219,232,241,0.45)] tracking-[0.02em]">
           {fmt(featured.data.date)}
         </p>

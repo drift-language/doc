@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import NTLink from '@drift/ui/NTLink';
+---
+
+
+<Base title="About Us">
+  <div class="about-content">
+    <h1 class:list={[
+      'text-4xl md:text-5xl font-bold',
+      'mb-7',
+    ]}>
+      About Us
+    </h1>
+
+    <div class="prose">
+
+      <section id="intro">
+        <p>
+          Drift is a programming language written in Kotlin and powered by the Java Virtual Machine.
+          It is designed to be expressive, familiar, and practical, drawing on the best ideas from
+          Java, Kotlin, C#, Swift, and TypeScript while standing on its own terms.
+        </p>
+
+        <p>
+          The language began as an interpreted prototype in its 2025.0 release, a sandbox to explore
+          syntax and semantics. With Gotthard, the first major evolution of Drift, that prototype gives
+          way to a proper JVM-based compiler. Drift sources are now compiled to JVM bytecode through a
+          full pipeline: lexing, parsing, type checking, and bytecode emission via ASM, enabling real
+          performance and interoperability with the broader Java ecosystem.
+        </p>
+
+        <p>
+          Gotthard also ships Homemade, the Drift standard library. It covers primary types, collections,
+          I/O, and the core utilities every Drift program needs. More specialized functionality is
+          distributed as separate packages called kits, keeping the language core focused and the
+          ecosystem composable.
+        </p>
+
+        <p>
+          Drift is developed openly on GitHub. It is a language for people who want to write code that
+          is clear to read, straightforward to reason about, and ready to grow.
+        </p>
+      </section>
+
+      <section id="birth">
+        <h2>
+          Born To Be Experimental And Educational
+        </h2>
+
+        <p>
+          Drift started as a student side project — a way to learn how programming languages actually
+          work by building one from scratch. The 2025.0 prototype was never intended for production;
+          it was a space to experiment with syntax ideas, understand interpreters, and figure out what
+          kind of language Drift could become. That origin is not something to hide. It shaped the
+          project's values: curiosity over convention, learning by doing, and no fear of starting over
+          when a better approach is found.
+        </p>
+
+        <p>
+          That spirit carries forward into Gotthard and beyond. Drift is still a place to explore
+          language design in the open, and it is built with the hope that others — students, hobbyists,
+          curious developers — will find it useful as a reference for how a JVM language is constructed,
+          from the first token to bytecode output.
+        </p>
+
+        <p>
+          <strong>
+            Since Gotthard, Drift has fixed its syntax and conventions. It tends to be more stable,
+            version after version.
+          </strong>
+        </p>
+      </section>
+
+      <section id="os">
+        <h2>
+          An Open-Source Project
+        </h2>
+
+        <p>
+          Drift is and will always be free and open-source. The compiler, the standard library, and
+          all official tooling live in the open on GitHub, where anyone can read the source, report
+          issues, and contribute. There is no commercial tier, no proprietary runtime, and no part of
+          the language hidden behind a paywall. The project is built this way by choice: open
+          development produces better software, and a language that belongs to its community is one
+          that can be trusted.
+        </p>
+      </section>
+
+      <hr />
+
+      <section class="flex flex-col gap-y-1" id="links">
+        <NTLink href="https://github.com/drift-language">Our GitHub Organization</NTLink>
+        <NTLink href="https://github.com/drift-language/drift">Star Our Main Repository!</NTLink>
+        <NTLink href="https://github.com/orgs/drift-language/projects/1">Our Project Board</NTLink>
+      </section>
+    </div>
+  </div>
+</Base>

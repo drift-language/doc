@@ -15,12 +15,10 @@ const { title, current } = Astro.props;
 </head>
 <body>
   <Navbar current={current} />
-  <main><slot /></main>
+  <main class="px-8 py-8 max-w-300 mx-auto"><slot /></main>
   <Footer />
 </body>
 </html>
 <style is:global>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; }
   body { background: var(--drift-bg); color: var(--drift-text); font-family: var(--drift-font-sans); min-height: 100vh; }
-  main { padding: 2rem; }
 </style>

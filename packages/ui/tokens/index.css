@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @source "../components";
 
 @font-face {
@@ -41,6 +42,21 @@
   --drift-radius-lg:  12px;
 }
 
+
+.prose {
+  --tw-prose-body:          var(--drift-text-muted);
+  --tw-prose-headings:      var(--drift-text);
+  --tw-prose-bold:          var(--drift-accent-hi);
+  --tw-prose-links:         var(--drift-accent-hi);
+  --tw-prose-code:          var(--drift-accent-hi);
+  --tw-prose-pre-bg:        var(--drift-surface);
+  --tw-prose-pre-code:      var(--drift-text);
+  --tw-prose-bullets:       var(--drift-text-faint);
+  --tw-prose-counters:      var(--drift-text-faint);
+  --tw-prose-hr:            var(--drift-border);
+  --tw-prose-quote-borders: var(--drift-border);
+  --tw-prose-captions:      var(--drift-text-faint);
+}
 
 @layer base {
   a {
