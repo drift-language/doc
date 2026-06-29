@@ -20,9 +20,6 @@ const { title, current } = Astro.props;
 </body>
 </html>
 <style is:global>
-  @layer base {
-    *, *::before, *::after { box-sizing: border-box; margin: 0; }
-    body { background: var(--drift-bg); color: var(--drift-text); font-family: var(--drift-font-sans); min-height: 100vh; }
-    main { padding: 2rem; }
-  }
+  body { background: var(--drift-bg); color: var(--drift-text); font-family: var(--drift-font-sans); min-height: 100vh; }
+  main { padding: 2rem; }
 </style>

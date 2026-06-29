@@ -2,6 +2,53 @@
 import NTLink from "./util/NTLink.astro";
 
 const year = new Date().getFullYear();
+
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+
+const sections: FooterSection[] = [
+  {
+    title: "Organization",
+    links: [
+      { label: "About us", href: "https://github.com/drift-language" },
+      { label: "Our newsroom", href: "https://news.gotthard.driftlang.dev" },
+      // { label: "Contact us", href: "https://gotthard.driftlang.dev" },
+    ],
+  },
+  {
+    title: "Community",
+    links: [
+      { label: "GitHub Organization", href: "https://github.com/drift-language" },
+      // { label: "Discord Community", href: "https://gotthard.driftlang.dev" },
+      // { label: "X (formerly Twitter)", href: "https://gotthard.driftlang.dev" },
+      // { label: "Mastodon", href: "https://gotthard.driftlang.dev" },
+    ],
+  },
+  {
+    title: "Project",
+    links: [
+      { label: "Introducing Gotthard", href: "https://news.driftlang.dev/drift-gotthard/" },
+      { label: "Contributing", href: "https://github.com/drift-language" },
+      { label: "Report an Issue", href: "https://github.com/drift-language" },
+      { label: "License", href: "https://github.com/drift-language/drift/blob/main/LICENSE.md" },
+    ],
+  },
+  {
+    title: "Language",
+    links: [
+      // { label: "Documentation", href: "https://docs.driftlang.dev" },
+      // { label: "Changelog", href: "https://docs.driftlang.dev" },
+      { label: "Roadmap", href: "https://github.com/orgs/drift-language/projects/1/views/1" },
+    ],
+  },
+];
 ---
 
 
@@ -60,100 +107,14 @@ const year = new Date().getFullYear();
     "grid grid-cols-1 lg:grid-cols-2 gap-10",
   ]}>
 
-    <section class="flex flex-col gap-y-1">
-      <h6 class:list={[
-        "font-semibold",
-      ]}>
-
-        Organization
-      </h6>
-
-      <NTLink href="https://github.com/drift-language">
-        About us
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        Our newsroom
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        Contact us
-      </NTLink>
-    </section>
-
-    <section class="flex flex-col gap-y-1">
-      <h6 class:list={[
-        "font-semibold",
-      ]}>
-
-        Community
-      </h6>
-
-      <NTLink href="https://github.com/drift-language">
-        GitHub Organization
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        Discord Community
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        X (formerly Twitter)
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        Mastodon
-      </NTLink>
-    </section>
-
-    <section class="flex flex-col gap-y-1">
-      <h6 class:list={[
-        "font-semibold",
-      ]}>
-
-        Project
-      </h6>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        Introducing Gotthard
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        Contributing
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        Report an Issue
-      </NTLink>
-
-      <NTLink href="https://gotthard.driftlang.dev">
-        License
-      </NTLink>
-    </section>
-
-    <section class:list={[
-      "flex flex-col gap-y-1",
-    ]}>
-
-      <h6 class:list={[
-        "font-semibold",
-      ]}>
-
-        Language
-      </h6>
-
-      <NTLink href="https://docs.driftlang.dev">
-        Documentation
-      </NTLink>
-
-      <NTLink href="https://docs.driftlang.dev">
-        Changelog
-      </NTLink>
-
-      <NTLink href="https://docs.driftlang.dev">
-        Roadmap
-      </NTLink>
-    </section>
+    {sections.map((section) => (
+      <section class="flex flex-col gap-y-1">
+        <h6 class="font-semibold">{section.title}</h6>
+        {section.links.map((link) => (
+          <NTLink href={link.href}>{link.label}</NTLink>
+        ))}
+      </section>
+    ))}
 
     <section>
       <p>
