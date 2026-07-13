@@ -109,7 +109,7 @@ const sections: FooterSection[] = [
 
     {sections.map((section) => (
       <section class="flex flex-col gap-y-1">
-        <h6 class="font-semibold">{section.title}</h6>
+        <h6 class="font-semibold text-(--drift-text)">{section.title}</h6>
         {section.links.map((link) => (
           <NTLink href={link.href}>{link.label}</NTLink>
         ))}
