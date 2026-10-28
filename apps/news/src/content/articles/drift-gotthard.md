@@ -70,8 +70,8 @@ Homemade is the name of the library that Gotthard brings to the language, the st
 It is a collection of native libraries and utilities that are part of the standard library.
 
 Homemade will be composed of all primary types like String, numerics, collection ones, etc. and functions 
-that are essential to build a Drift application, like I/O and logging. Drift does not use the Java primary
-types.
+that are essential to build a Drift application, like I/O and logging. Drift's types are built on top of
+the Java types, using them as a foundation and extending them with Drift's own semantics.
 
 All more specific libraries will be released as separate packages, called "kits".
 
